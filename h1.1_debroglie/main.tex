@@ -1,0 +1,229 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+
+\section*{Aufgabe H1.1: de-Broglie-Wellenlänge (3 Punkte)}
+
+\textbf{Aufgabenstellung:}
+
+\begin{enumerate}
+    \item[(a)] Die Ionisationsenergie des Wasserstoffatoms im Grundzustand ist 
+    \[
+    E_{\mathrm{ion}} = \SI{13.6}{eV}.
+    \]
+    Berechnen Sie Frequenz, Wellenlänge und Wellenzahl für ionisierende elektromagnetische Strahlung.
+    
+    \item[(b)] Leiten Sie den relativistischen, klassischen und ultrarelativistischen Ausdruck für die Abhängigkeit der de-Broglie-Wellenlänge von der kinetischen Energie \(E_{\mathrm{kin}}\) her. Bestimmen Sie die de-Broglie-Wellenlänge für:
+    \begin{enumerate}
+        \item[(i)] ein Elektron mit \(E_{\mathrm{kin}} = \SI{10}{eV}\),
+        \item[(ii)] ein Elektron mit \(E_{\mathrm{kin}} = \SI{1}{GeV}\),
+        \item[(iii)] ein Higgs-Boson \(\bigl(m_H = \SI{125}{GeV}/c^2\bigr)\) mit \(E_{\mathrm{kin}} = \SI{1}{GeV}\),
+        \item[(iv)] ein Staubkorn der Masse \(\SI{1e-12}{kg}\) mit einer Geschwindigkeit von \(\SI{1}{m/s}\).
+    \end{enumerate}
+\end{enumerate}
+
+Gegeben:
+\[
+e = -\SI{1.6e-19}{C}, \quad m_e = \SI{511}{keV}/c^2, \quad h = \SI{4.14e-15}{eV\cdot s}.
+\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section*{Lösung}
+
+\subsection*{Teil (a): Ionisierende Strahlung}
+
+Die Energie eines Photons ist durch
+\[
+E = h \nu
+\]
+gegeben. Setzt man \(E_{\mathrm{ion}} = \SI{13.6}{eV}\) ein, so erhält man
+\[
+\nu = \frac{E_{\mathrm{ion}}}{h} = \frac{\SI{13.6}{eV}}{\SI{4.14e-15}{eV\cdot s}} \approx \SI{3.29e15}{Hz}.
+\]
+
+Die Wellenlänge \(\lambda\) berechnet sich über
+\[
+\lambda = \frac{c}{\nu},
+\]
+wobei \(c \approx \SI{3e8}{m/s}\) die Lichtgeschwindigkeit ist:
+\[
+\lambda = \frac{\SI{3e8}{m/s}}{\SI{3.29e15}{Hz}} \approx \SI{9.11e-8}{m} \quad (\SI{91}{nm}).
+\]
+
+Die Wellenzahl \(k\) (als der Betragswert des Wellenvektors) ist definiert als
+\[
+k = \frac{2\pi}{\lambda}.
+\]
+Damit folgt:
+\[
+k \approx \frac{2\pi}{\SI{9.11e-8}{m}} \approx \SI{6.89e7}{m^{-1}}.
+\]
+
+\subsection*{Teil (b): Herleitung der de-Broglie-Wellenlänge in Abhängigkeit von \(E_{\mathrm{kin}}\)}
+
+Der de-Broglie Zusammenhang lautet
+\[
+\lambda = \frac{h}{p},
+\]
+wobei \(p\) der Impuls des Teilchens ist.
+
+\subsubsection*{Relativistischer Fall}
+
+Die Energie-Impuls-Relation in der speziellen Relativitätstheorie lautet:
+\[
+E^2 = (pc)^2 + (m_0 c^2)^2,
+\]
+wobei die Gesamtenergie
+\[
+E = E_{\mathrm{kin}} + m_0 c^2.
+\]
+Daraus folgt für den Impuls:
+\[
+p = \frac{\sqrt{(E_{\mathrm{kin}}+m_0 c^2)^2 - (m_0 c^2)^2}}{c} = \frac{\sqrt{E_{\mathrm{kin}}^2 + 2 m_0 c^2\, E_{\mathrm{kin}}}}{c}.
+\]
+Somit ist die de-Broglie-Wellenlänge
+\[
+\lambda = \frac{h}{p} = \frac{h c}{\sqrt{E_{\mathrm{kin}}^2 + 2 m_0 c^2\, E_{\mathrm{kin}}}}.
+\]
+
+\subsubsection*{Klassischer (nicht-relativistischer) Fall}
+
+Für Teilchen, bei denen \(E_{\mathrm{kin}} \ll m_0 c^2\) gilt, ist die klassische Beziehung
+\[
+E_{\mathrm{kin}} = \frac{p^2}{2m_0},
+\]
+also
+\[
+p = \sqrt{2 m_0 E_{\mathrm{kin}}}.
+\]
+Dann folgt:
+\[
+\lambda = \frac{h}{\sqrt{2 m_0 E_{\mathrm{kin}}}}.
+\]
+
+\subsubsection*{Ultrarelativistischer Fall}
+
+Im ultrarelativistischen Fall, bei dem \(E_{\mathrm{kin}} \gg m_0 c^2\) (die Ruheenergie ist vernachlässigbar), gilt näherungsweise:
+\[
+p \approx \frac{E_{\mathrm{kin}}}{c}.
+\]
+Daraus folgt:
+\[
+\lambda = \frac{h}{p} \approx \frac{h c}{E_{\mathrm{kin}}}.
+\]
+
+\vspace{1em}
+\textbf{Berechnung der de-Broglie-Wellenlänge für die gegebenen Fälle:}
+
+\subsection*{(i) Elektron mit \(E_{\mathrm{kin}} = \SI{10}{eV}\)}
+
+Da \(\SI{10}{eV} \ll m_e c^2 \approx \SI{511}{keV}\) gilt, verwendet man den klassischen Ausdruck:
+\[
+\lambda = \frac{h}{\sqrt{2 m_e E_{\mathrm{kin}}}}.
+\]
+Dabei ist zu beachten, dass
+\[
+m_e = \SI{511}{keV}/c^2 = \SI{511e3}{eV}/c^2.
+\]
+Berechnen wir den Impuls:
+\[
+p = \sqrt{2 m_e E_{\mathrm{kin}}} = \sqrt{2 \cdot \SI{511e3}{eV}/c^2 \cdot \SI{10}{eV}} = \sqrt{\SI{1.022e7}{eV^2}/c^2} \approx \frac{\SI{3195}{eV}}{c}.
+\]
+Damit folgt:
+\[
+\lambda = \frac{h}{p} = \frac{\SI{4.14e-15}{eV\cdot s}}{\SI{3195}{eV}/c} 
+= \frac{\SI{4.14e-15}{eV\cdot s} \cdot c}{\SI{3195}{eV}}.
+\]
+Mit \(c \approx \SI{3e8}{m/s}\):
+\[
+\lambda \approx \frac{4.14 \times 10^{-15} \cdot 3 \times 10^8}{3195} \, \si{m} \approx \SI{3.89e-10}{m} \quad (\approx \SI{0.389}{nm}).
+\]
+
+\subsection*{(ii) Elektron mit \(E_{\mathrm{kin}} = \SI{1}{GeV}\)}
+
+Hier gilt \(E_{\mathrm{kin}} \gg m_e c^2\), sodass der ultrarelativistische Ausdruck verwendet wird:
+\[
+\lambda \approx \frac{h c}{E_{\mathrm{kin}}}.
+\]
+Einsetzen der Werte:
+\[
+\lambda \approx \frac{\SI{4.14e-15}{eV\cdot s} \cdot \SI{3e8}{m/s}}{\SI{1e9}{eV}} 
+= \frac{\SI{1.242e-6}{eV\cdot m}}{\SI{1e9}{eV}} \approx \SI{1.242e-15}{m}.
+\]
+
+\subsection*{(iii) Higgs-Boson mit \(m_H = \SI{125}{GeV}/c^2\) und \(E_{\mathrm{kin}} = \SI{1}{GeV}\)}
+
+Da für das Higgs-Boson \(E_{\mathrm{kin}} \ll m_H c^2\) gilt, nutzen wir auch hier den klassischen Ausdruck:
+\[
+\lambda = \frac{h}{\sqrt{2 m_H E_{\mathrm{kin}}}}.
+\]
+Hierbei ist
+\[
+m_H = \SI{125}{GeV}/c^2 = \SI{125e9}{eV}/c^2.
+\]
+Der Impuls beträgt:
+\[
+p = \sqrt{2 m_H E_{\mathrm{kin}}} = \sqrt{2 \cdot \SI{125e9}{eV}/c^2 \cdot \SI{1e9}{eV}} 
+= \sqrt{\SI{250e18}{eV^2}/c^2}.
+\]
+Da
+\[
+\sqrt{2.5 \times 10^{20}} \approx 1.581 \times 10^{10}\,\si{eV},
+\]
+folgt
+\[
+p \approx \frac{1.581 \times 10^{10}\,\si{eV}}{c},
+\]
+und somit
+\[
+\lambda = \frac{h}{p} \approx \frac{\SI{4.14e-15}{eV\cdot s}\cdot c}{1.581 \times 10^{10}\,\si{eV}} 
+\approx \frac{\SI{1.242e-6}{eV\cdot m}}{1.581 \times 10^{10}\,\si{eV}} \approx \SI{7.86e-17}{m}.
+\]
+
+\subsection*{(iv) Staubkorn mit \(m = \SI{1e-12}{kg}\) und \(v = \SI{1}{m/s}\)}
+
+Da hier relativistische Effekte völlig vernachlässigbar sind, gilt:
+\[
+\lambda = \frac{h}{mv}.
+\]
+Hierbei verwenden wir den klassischen Planckschen Wirkungsquantum in SI-Einheiten:
+\[
+h_{\mathrm{SI}} = \SI{6.626e-34}{J\cdot s}.
+\]
+Dann erhalten wir:
+\[
+\lambda = \frac{\SI{6.626e-34}{J\cdot s}}{\SI{1e-12}{kg} \cdot \SI{1}{m/s}} = \SI{6.626e-22}{m}.
+\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section*{Zusammenfassung der Ergebnisse}
+
+\begin{itemize}
+    \item \textbf{(a) Ionisierende Strahlung:}
+    \begin{align*}
+        \nu &\approx \SI{3.29e15}{Hz}, \\
+        \lambda &\approx \SI{9.11e-8}{m} \quad (\SI{91}{nm}), \\
+        k &\approx \SI{6.89e7}{m^{-1}}.
+    \end{align*}
+    \item \textbf{(b) de-Broglie-Wellenlängen:}
+    \begin{enumerate}
+        \item[(i)] Elektron (\(E_{\mathrm{kin}} = \SI{10}{eV}\)): \(\lambda \approx \SI{3.89e-10}{m}\).
+        \item[(ii)] Elektron (\(E_{\mathrm{kin}} = \SI{1}{GeV}\)): \(\lambda \approx \SI{1.24e-15}{m}\).
+        \item[(iii)] Higgs-Boson (\(m_H = \SI{125}{GeV}/c^2\), \(E_{\mathrm{kin}} = \SI{1}{GeV}\)): \(\lambda \approx \SI{7.86e-17}{m}\).
+        \item[(iv)] Staubkorn (\(m = \SI{1e-12}{kg}\), \(v = \SI{1}{m/s}\)): \(\lambda \approx \SI{6.63e-22}{m}\).
+    \end{enumerate}
+\end{itemize}
+
+\end{document}

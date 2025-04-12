@@ -1,0 +1,176 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm}
+\usepackage{lmodern}
+\usepackage{parskip}
+
+\begin{document}
+
+\section*{Aufgabenstellung}
+
+Gegeben sei eine Funktion \( f : \mathbb{R} \to \mathbb{C} \), die absolut integrierbar ist, und deren Fourier-Transformation \(\hat{f}\) im eindimensionalen Fall durch
+\[
+\hat{f}(p)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x)e^{-ipx}\,dx
+\]
+definiert ist.
+
+Berechnen Sie die Fourier-Transformierten der folgenden Funktionen:
+\begin{enumerate}
+  \item[(a)] \( f(x-a) \) mit \( a\in\mathbb{R} \),
+  \item[(b)] \( f(ax) \) mit \( a\in\mathbb{R}\setminus\{0\} \),
+  \item[(c)] \( f(-x) \),
+  \item[(d)] \( f^{(n)}(x) \), sofern \( f \) \( n \)-mal stetig differenzierbar ist und 
+  \[
+  \lim_{x\to\pm\infty} f^{(m)}(x)=0 \quad \text{für } m<n,
+  \]
+  gilt.
+\end{enumerate}
+
+Betrachten Sie ferner die Gauß-Funktion
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\!\Biggl(-\frac{x^2}{2\sigma^2}\Biggr),\quad \sigma>0.
+\]
+\begin{enumerate}
+  \item[(e)] Berechnen Sie zunächst die Fourier-Transformierte dieser Funktion. Bestimmen Sie anschließend das Produkt
+  \[
+  \langle \Delta x^2 \rangle \cdot \langle \Delta p^2 \rangle,
+  \]
+  wobei
+  \[
+  \langle \Delta x^2 \rangle = \int_{-\infty}^{\infty} (x-\langle x\rangle)^2\, |f(x)|^2\,dx,\quad \langle x\rangle =\int_{-\infty}^{\infty} x\, |f(x)|^2\,dx,
+  \]
+  und
+  \[
+  \langle \Delta p^2 \rangle = \int_{-\infty}^{\infty} (p-\langle p\rangle)^2\, |\hat{f}(p)|^2\,dp,\quad \langle p\rangle =\int_{-\infty}^{\infty} p\, |\hat{f}(p)|^2\,dp.
+  \]
+\end{enumerate}
+
+\vspace{5mm}
+\hrule
+\vspace{5mm}
+
+\section*{Lösung}
+
+\subsection*{(a) Fourier-Transformation von \( f(x-a) \)}
+
+Wir betrachten
+\[
+\mathcal{F}\{f(x-a)\}(p) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x-a)e^{-ipx}\,dx.
+\]
+Setzen wir die Substitution \( y=x-a \) (wobei \( dy=dx \)) ein, so erhalten wir:
+\[
+\begin{aligned}
+\mathcal{F}\{f(x-a)\}(p)
+&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y)e^{-ip(y+a)}\,dy\\[1mm]
+&=\frac{e^{-ipa}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(y)e^{-ipy}\,dy\\[1mm]
+&= e^{-ipa}\,\hat{f}(p).
+\end{aligned}
+\]
+\[
+\boxed{\widehat{f(x-a)}(p)=e^{-ipa}\,\hat{f}(p).}
+\]
+
+\subsection*{(b) Fourier-Transformation von \( f(ax) \) mit \( a\neq 0 \)}
+
+Wir berechnen
+\[
+\mathcal{F}\{f(ax)\}(p) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(ax)e^{-ipx}\,dx.
+\]
+Mit der Substitution \( u=ax \) gilt \( x=\frac{u}{a} \) und \( dx=\frac{du}{a} \). Damit wird
+\[
+\begin{aligned}
+\mathcal{F}\{f(ax)\}(p)
+&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(u)e^{-ip\frac{u}{a}}\frac{du}{a}\\[1mm]
+&=\frac{1}{|a|}\,\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(u)e^{-i\frac{p}{a}u}\,du\\[1mm]
+&=\frac{1}{|a|}\,\hat{f}\!\Bigl(\frac{p}{a}\Bigr).
+\end{aligned}
+\]
+\[
+\boxed{\widehat{f(ax)}(p)=\frac{1}{|a|}\,\hat{f}\!\Bigl(\frac{p}{a}\Bigr).}
+\]
+
+\subsection*{(c) Fourier-Transformation von \( f(-x) \)}
+
+Wir haben:
+\[
+\hat{g}(p)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(-x)e^{-ipx}\,dx.
+\]
+Mit der Substitution \( y=-x \) (d.h. \( x=-y \) und \( dx=-dy \)) erhalten wir:
+\[
+\begin{aligned}
+\hat{g}(p)
+&=\frac{1}{\sqrt{2\pi}}\int_{\infty}^{-\infty} f(y)e^{-ip(-y)}(-dy)\\[1mm]
+&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(y)e^{ipy}\,dy\\[1mm]
+&=\hat{f}(-p).
+\end{aligned}
+\]
+\[
+\boxed{\widehat{f(-x)}(p)=\hat{f}(-p).}
+\]
+
+\subsection*{(d) Fourier-Transformation von \( f^{(n)}(x) \)}
+
+Unter der Annahme, dass \( f \) \( n \)-mal stetig differenzierbar ist und dass für \( m<n \)
+\[
+\lim_{x\to\pm\infty}f^{(m)}(x)=0,
+\]
+folgt durch mehrmaliges partielles Integrieren:
+\[
+\mathcal{F}\{f^{(n)}(x)\}(p)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f^{(n)}(x)e^{-ipx}\,dx = (ip)^n\hat{f}(p).
+\]
+\[
+\boxed{\widehat{f^{(n)}}(p)=(ip)^n\,\hat{f}(p).}
+\]
+
+\subsection*{(e) Fourier-Transformation der Gauß-Funktion und Berechnung des Unschärfeprodukts}
+
+Die gegebene Gauß-Funktion lautet
+\[
+f(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\!\Biggl(-\frac{x^2}{2\sigma^2}\Biggr),\quad \sigma>0.
+\]
+
+\paragraph{Fourier-Transformation der Gauß-Funktion:}
+
+Nach Definition gilt
+\[
+\hat{f}(p)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \frac{1}{\sigma\sqrt{2\pi}}\exp\!\Biggl(-\frac{x^2}{2\sigma^2}\Biggr)e^{-ipx}\,dx.
+\]
+Bekanntlich führt die Integration eines exponentiellen Quadrats (nach quadratischer Vervollständigung) zu einem weiteren Ausdruck im exponentiellen Bereich. Man erhält
+\[
+\boxed{\hat{f}(p)=\frac{1}{\sqrt{2\pi}}\exp\!\Biggl(-\frac{\sigma^2p^2}{2}\Biggr).}
+\]
+
+\paragraph{Berechnung des Unschärfeprodukts \(\langle \Delta x^2\rangle\langle \Delta p^2\rangle\):}
+
+Wir definieren
+\[
+\langle x\rangle = \int_{-\infty}^{\infty} x\,|f(x)|^2\,dx,\qquad
+\langle \Delta x^2\rangle = \int_{-\infty}^{\infty} (x-\langle x\rangle)^2\,|f(x)|^2\,dx,
+\]
+und
+\[
+\langle p\rangle = \int_{-\infty}^{\infty} p\,|\hat{f}(p)|^2\,dp,\qquad
+\langle \Delta p^2\rangle = \int_{-\infty}^{\infty} (p-\langle p\rangle)^2\,|\hat{f}(p)|^2\,dp.
+\]
+
+Da \( f(x) \) (und folglich auch \( |f(x)|^2 \)) eine gerade Funktion ist, folgt \( \langle x\rangle = 0 \). Entsprechendes gilt für \( \langle p\rangle \). Es zeigt sich, dass (bei korrekter Normierung) für diese Gauß-Funktion
+\[
+\langle \Delta x^2\rangle = \frac{\sigma^2}{2} \quad \text{und} \quad \langle \Delta p^2\rangle = \frac{1}{2\sigma^2}.
+\]
+Daraus folgt das Unschärfeprodukt:
+\[
+\langle \Delta x^2\rangle \cdot \langle \Delta p^2\rangle = \frac{\sigma^2}{2}\cdot\frac{1}{2\sigma^2} = \frac{1}{4}.
+\]
+\[
+\boxed{\langle \Delta x^2\rangle \langle \Delta p^2\rangle = \frac{1}{4}.}
+\]
+
+\medskip
+
+\textbf{Bemerkung:}\\
+Unter Verwendung der hier gewählten Fourier-Transformationskonventionen und –normierungen erfüllt die Gauß-Funktion (nach entsprechender Normierung) die untere Schranke der Heisenbergschen Unschärferelation.
+
+\end{document}

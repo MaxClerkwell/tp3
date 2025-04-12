@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\begin{document}
+
+\section*{Aufgabe H1.2: Gaußsche Integrale (3 Punkte)}
+
+Zeigen Sie, dass für die Gaußschen Integrale die folgenden Identitäten gelten:
+\begin{enumerate}
+  \item[(a)]
+    \[
+    \int_{-\infty}^{+\infty} e^{-\alpha x^2}\,dx = \sqrt{\frac{\pi}{\alpha}}, \quad \text{Re}(\alpha) > 0.
+    \]
+  \item[(b)]
+    \[
+    \int_{-\infty}^{+\infty} e^{-\alpha x^2+\beta x}\,dx = \sqrt{\frac{\pi}{\alpha}}\, e^{\frac{\beta^2}{4\alpha}}, \quad \text{Re}(\alpha) > 0.
+    \]
+\end{enumerate}
+
+\textbf{Hinweis:} Für den Fall (a) berechnen Sie zuerst das Quadrat des Integrals in Polarkoordinaten.
+
+\bigskip
+
+\section*{Lösung}
+
+\subsection*{(a) Berechnung des Integrals \(\displaystyle I(\alpha)=\int_{-\infty}^{+\infty} e^{-\alpha x^2}\,dx\)}
+
+Zunächst betrachten wir das Quadrat des Integrals:
+\[
+I(\alpha)^2 = \left( \int_{-\infty}^{+\infty} e^{-\alpha x^2}\,dx \right)^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} e^{-\alpha(x^2+y^2)}\,dx\,dy.
+\]
+Wechseln wir nun in Polarkoordinaten:
+\[
+x = r\cos\theta,\quad y = r\sin\theta,\quad \text{und}\quad dx\,dy = r\,dr\,d\theta.
+\]
+Damit erhalten wir:
+\[
+I(\alpha)^2 = \int_0^{2\pi} \int_0^\infty e^{-\alpha r^2} \, r\,dr\, d\theta.
+\]
+Das \(\theta\)-Integral lässt sich direkt berechnen:
+\[
+\int_0^{2\pi} d\theta = 2\pi.
+\]
+Für das \(r\)-Integral führen wir die Substitution \(u=\alpha r^2\) durch, woraus \(du=2\alpha r\,dr\) folgt, also:
+\[
+r\,dr = \frac{du}{2\alpha}.
+\]
+Somit:
+\[
+\int_0^\infty r\, e^{-\alpha r^2}\,dr = \frac{1}{2\alpha} \int_0^\infty e^{-u}\,du = \frac{1}{2\alpha}.
+\]
+Es ergibt sich:
+\[
+I(\alpha)^2 = 2\pi \cdot \frac{1}{2\alpha} = \frac{\pi}{\alpha}.
+\]
+Daraus folgt nach Wurzelziehung (und unter Beachtung, dass \(I(\alpha)>0\)):
+\[
+I(\alpha) = \sqrt{\frac{\pi}{\alpha}}.
+\]
+
+\subsection*{(b) Berechnung des Integrals \(\displaystyle J(\alpha,\beta)=\int_{-\infty}^{+\infty} e^{-\alpha x^2+\beta x}\,dx\)}
+
+Wir schreiben zunächst den Exponenten um:
+\[
+-\alpha x^2+\beta x = -\alpha \left(x^2-\frac{\beta}{\alpha}x\right).
+\]
+Um das Quadrat zu vervollständigen, beachten wir:
+\[
+x^2-\frac{\beta}{\alpha}x = \left(x-\frac{\beta}{2\alpha}\right)^2 - \frac{\beta^2}{4\alpha^2}.
+\]
+Somit kann der Exponent geschrieben werden als:
+\[
+-\alpha x^2+\beta x = -\alpha \left(x-\frac{\beta}{2\alpha}\right)^2 + \frac{\beta^2}{4\alpha}.
+\]
+Einsetzen in das Integral liefert:
+\[
+J(\alpha,\beta)= \int_{-\infty}^{+\infty} e^{-\alpha \left(x-\frac{\beta}{2\alpha}\right)^2 + \frac{\beta^2}{4\alpha}}\,dx 
+= e^{\frac{\beta^2}{4\alpha}} \int_{-\infty}^{+\infty} e^{-\alpha \left(x-\frac{\beta}{2\alpha}\right)^2}\,dx.
+\]
+Mit der Substitution \( u = x-\frac{\beta}{2\alpha} \) (wobei \(du=dx\)) ändert sich das Integral zu:
+\[
+\int_{-\infty}^{+\infty} e^{-\alpha u^2}\,du,
+\]
+welches nach (a) den Wert
+\[
+\sqrt{\frac{\pi}{\alpha}}
+\]
+hat. Somit erhalten wir:
+\[
+J(\alpha,\beta)= e^{\frac{\beta^2}{4\alpha}} \sqrt{\frac{\pi}{\alpha}}.
+\]
+
+\bigskip
+
+\section*{Zusammenfassung}
+
+\[
+\boxed{
+\begin{aligned}
+\int_{-\infty}^{+\infty} e^{-\alpha x^2}\,dx &= \sqrt{\frac{\pi}{\alpha}}, \quad \text{Re}(\alpha) > 0,\\[1mm]
+\int_{-\infty}^{+\infty} e^{-\alpha x^2+\beta x}\,dx &= \sqrt{\frac{\pi}{\alpha}}\, e^{\frac{\beta^2}{4\alpha}}, \quad \text{Re}(\alpha) > 0.
+\end{aligned}
+}
+\]
+
+\end{document}
