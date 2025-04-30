@@ -1,26 +1,29 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
 \usepackage{physics}
+\usepackage{csquotes}
 \usepackage{hyperref}
+\sloppy
 
 \begin{document}
 
 \section*{Lösung zu H2.2: Komplexes Potential}
 
-Wir betrachten die zeitabhängige Schrödinger-Gleichung im Einklang mit einem komplexen Potential
+Wir betrachten die zeitabhängige Schrödinger-Gleichung mit einem komplexen Potential
 \[
 V(\mathbf{x}) = v(\mathbf{x}) + i\,w(\mathbf{x}),
 \]
-wobei \(v(\mathbf{x})\) und \(w(\mathbf{x})\) reelle Funktionen sind.
+wobei $v(\mathbf{x})$ und $w(\mathbf{x})$ reelle Funktionen sind.
 
 \subsection*{(a) Herleitung der modifizierten Kontinuitätsgleichung}
 
-Die Schrödinger-Gleichung und ihre komplex konjugierte lauten
+Die Schrödinger-Gleichung und ihre komplex Konjugierte lauten
 \begin{align}
-  i\hbar\,\frac{\partial}{\partial t}\Psi(\mathbf{x},t) &= \Bigl[-\frac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) + i\,w(\mathbf{x})\Bigr]\Psi(\mathbf{x},t), \label{schroedinger}\\
-  -i\hbar\,\frac{\partial}{\partial t}\Psi^*(\mathbf{x},t) &= \Bigl[-\frac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) - i\,w(\mathbf{x})\Bigr]\Psi^*(\mathbf{x},t).
+  i\hbar\,\frac{\partial}{\partial t}\Psi(\mathbf{x},t) &= \bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) + i\,w(\mathbf{x})\bigr]\,\Psi(\mathbf{x},t), \\
+  -i\hbar\,\frac{\partial}{\partial t}\Psi^*(\mathbf{x},t) &= \bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) - i\,w(\mathbf{x})\bigr]\,\Psi^*(\mathbf{x},t).
 \end{align}
 Wir definieren die Wahrscheinlichkeitsdichte
 \[
@@ -28,60 +31,49 @@ Wir definieren die Wahrscheinlichkeitsdichte
 \]
 und den Wahrscheinlichkeitsstrom
 \[
-\mathbf{j}(\mathbf{x},t)
-= \frac{\hbar}{2mi}\Bigl(\Psi^*\nabla\Psi - (\nabla\Psi^*)\,\Psi\Bigr).
+\mathbf{j}(\mathbf{x},t) = \tfrac{\hbar}{2mi}\bigl(\Psi^*\nabla\Psi - (\nabla\Psi^*)\,\Psi\bigr).
 \]
-Leiten wir nun \(\rho\) nach der Zeit ab:
+Die zeitliche Ableitung von $\rho$ ergibt
 \begin{align*}
   \frac{\partial \rho}{\partial t}
-  &= \Psi^*\,\frac{\partial \Psi}{\partial t}
-     + \frac{\partial \Psi^*}{\partial t}\,\Psi \\
-  &= \Psi^*\,
-     \frac{1}{i\hbar}\Bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v + i\,w\Bigr]\Psi
-     \;-\;\Psi\,
-     \frac{1}{i\hbar}\Bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v - i\,w\Bigr]\Psi^*.
+  &= \Psi^*\,\frac{\partial \Psi}{\partial t} + \frac{\partial \Psi^*}{\partial t}\,\Psi \\
+  &= \Psi^*\,\frac{1}{i\hbar}\bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v + i\,w\bigr]\,\Psi
+     - \Psi\,\frac{1}{i\hbar}\bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v - i\,w\bigr]\,\Psi^*.
 \end{align*}
-Die Terme mit dem reellen Anteil \(v\) heben sich weg, ebenso die kinetischen Terme geben nach partieller Integration genau den Divergenzbeitrag \(-\nabla\cdot\mathbf{j}\). Übrig bleibt jedoch
+Die Terme des reellen Potentials und die kinetischen Terme führen auf den Divergenzbeitrag $-\nabla\cdot\mathbf{j}$, übrig bleibt
 \[
-\frac{\partial \rho}{\partial t}
-+ \nabla\cdot\mathbf{j}
-= -\frac{2}{\hbar}\;w(\mathbf{x})\;\rho(\mathbf{x},t).
+\frac{\partial \rho}{\partial t} + \nabla\cdot\mathbf{j} = -\frac{2}{\hbar}\,w(\mathbf{x})\,\rho(\mathbf{x},t).
 \]
-Diese Gleichung ist die \emph{modifizierte Kontinuitätsgleichung} für ein komplexes Potential. 
-Zum Vergleich: Für ein rein reelles Potential \(V=v\) wäre der rechte Seiten-Ausdruck Null, und es gilt
+Zum Vergleich: Für $V=v(\mathbf{x})$ echt wäre RHS~$=0$ und man erhielte
 \[
-\frac{\partial \rho}{\partial t} + \nabla\cdot\mathbf{j} = 0,
+\frac{\partial \rho}{\partial t} + \nabla\cdot\mathbf{j} = 0.
 \]
-also die gewöhnliche Kontinuitätsgleichung.
 
 \subsection*{(b) Erhaltung der Gesamtwahrscheinlichkeit}
 
-Wir betrachten die Gesamtwahrscheinlichkeit (bzw. Norm)
+Die Norm (Gesamtwahrscheinlichkeit) ist
 \[
-P(t) \;=\; \int_{\mathbb{R}^3} \rho(\mathbf{x},t)\,\mathrm{d}^3x.
+P(t) = \int_{\mathbb{R}^3} \rho(\mathbf{x},t)\,\mathrm{d}^3x.
 \]
-Differenzieren wir nach der Zeit und nutzen die modifizierte Kontinuitätsgleichung,
+Deren Zeitableitung gibt mit der modifizierten Kontinuitätsgleichung
 \begin{align*}
   \frac{\mathrm{d}P}{\mathrm{d}t}
   &= \int_{\mathbb{R}^3} \frac{\partial \rho}{\partial t}\,\mathrm{d}^3x
    = -\int_{\mathbb{R}^3} \nabla\cdot\mathbf{j}\,\mathrm{d}^3x
-     - \frac{2}{\hbar}\int_{\mathbb{R}^3} w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.
+     - \tfrac{2}{\hbar}\int_{\mathbb{R}^3}w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.
 \end{align*}
-Der erste Integralterm verschwindet, sofern \(\mathbf{j}\) am Unendlichen ausreichend schnell gegen Null geht. Damit ergibt sich
+Der erste Term verschwindet, wenn $\mathbf{j}\to0$ im Unendlichen, daher
 \[
-\boxed{
-\frac{\mathrm{d}P}{\mathrm{d}t}
-= - \frac{2}{\hbar}\int_{\mathbb{R}^3} w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.
-}
+\boxed{\frac{\mathrm{d}P}{\mathrm{d}t} = -\frac{2}{\hbar} \int_{\mathbb{R}^3} w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.}
 \]
+
 \begin{itemize}
-  \item Ist \(w(\mathbf{x}) > 0\) in einem Gebiet, so nimmt \(P(t)\) ab: Das System \emph{verliert} Wahrscheinlichkeit, was man als partielle \emph{Absorption} oder Austritt von Teilchen interpretieren kann.
-  \item Ist \(w(\mathbf{x}) < 0\), so wächst \(P(t)\): Man spricht von einer \emph{Verstärkung} oder Quelle von Teilchen.
-  \item Insgesamt ist \(P(t)\) im Allgemeinen \emph{nicht} erhalten, im Gegensatz zum Fall eines reellen Potentials.
+  \item Für $w(\mathbf{x})>0$ nimmt $P(t)$ ab: partielle Absorption (\enquote{Senke}).
+  \item Für $w(\mathbf{x})<0$ wächst $P(t)$: Verstärkung (\enquote{Quelle}).
+  \item Im Allgemeinen ist $P(t)$ nicht erhalten, im Gegensatz zum Fall eines reellen Potentials.
 \end{itemize}
 
-\medskip
-
-\textbf{Interpretation:} Ein imaginärer Anteil des Potentials kann als effektiver „Quell‐“ bzw. „Senken“-Term für Teilchen betrachtet werden. In der Theorie offener Quanten­systeme wird dies oft als Modell für dissipative Prozesse (z.\,B. Teilchenverlust durch Reaktionen, Absorption in einem Bildgebungsprozess) verwendet.
+\textbf{Interpretation:} Der imagi­näre Anteil des Potentials wirkt wie Quelle bzw. Senke von Teilchen; Modelle offener Quantensysteme verwenden solche Terme für dissipative Prozesse.
 
 \end{document}
+

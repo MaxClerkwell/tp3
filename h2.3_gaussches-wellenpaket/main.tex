@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,enumitem}
 \begin{document}
 \section*{Lösung H2.3 Gaußsches Wellenpaket}
@@ -26,9 +27,14 @@ Wir fassen im Exponenten quadratisch zusammen:
 + k\Bigl(2d^2k_0 + i x\Bigr)
 - d^2k_0^2.
 \]
-Mithilfe
-\(\displaystyle\int e^{-αk^2+βk}\,dk=\sqrt{\frac{\pi}{α}}\,e^{β^2/(4α)}\)
-\((\Re α>0)\) folgt nach Rechnung
+Mithilfe der Gauß-Integral-Formel
+\[
+\int_{-\infty}^\infty e^{-\alpha k^2+\beta k}\,dk
+=\sqrt{\frac{\pi}{\alpha}}\;
+\exp\!\biggl(\frac{\beta^2}{4\alpha}\biggr),
+\quad \Re(\alpha)>0,
+\]
+folgt nach Rechnung
 \[
 \Psi(x,t)
 =A\sqrt{\frac{2d^2}{2d^2 + \tfrac{i\hbar t}{m}}}
@@ -39,7 +45,7 @@ Mithilfe
 \]
 mit \(v=\hbar k_0/m\). Daraus
 \[
-P(x,t)=|\Psi|^2
+P(x,t)=|\Psi(x,t)|^2
 =\frac{d}{\sqrt{2\pi\,(1+\Delta^2)}}\,
 \exp\!\Bigl[-\frac{(x-vt)^2}{2\,d^2(1+\Delta^2)}\Bigr],
 \quad
@@ -51,16 +57,16 @@ Die Breite \(\sigma_x(t)=d\sqrt{1+\Delta^2}\) verdoppelt sich für
 \(\Delta=\sqrt{3}\), also
 \[
 t_{\rm char}
-=\frac{2m d^2}{\hbar}\,\sqrt{3}.
+=\frac{2\,m\,d^2}{\hbar}\,\sqrt{3}.
 \]
 \begin{itemize}[leftmargin=*]
-  \item Tennisball (\(m=5{,}75\cdot10^{-2}\,\mathrm{kg},\,d=6{,}5\cdot10^{-2}\,\mathrm m\)):
+  \item Tennisball (\(m=5,75\cdot10^{-2}\,\mathrm{kg},\,d=6,5\cdot10^{-2}\,\mathrm m\)):
   \[
   t\approx2{,}5\times10^{23}\,\mathrm{Jahre}.
   \]
-  \item Proton (\(m=1{,}7\cdot10^{-27}\,\mathrm{kg},\,d=10^{-15}\,\mathrm m\)):
+  \item Proton (\(m=1,7\cdot10^{-27}\,\mathrm{kg},\,d=10^{-15}\,\mathrm m\)):
   \[
-  t\approx6\times10^{-23}\,\mathrm s.
+  t\approx6\times10^{-23}\,\mathrm{s}.
   \]
 \end{itemize}
 
@@ -72,7 +78,7 @@ K(x,t;x',0)
 \exp\!\Bigl[i\frac{m(x-x')^2}{2\hbar t}\Bigr]
 \]
 führt über
-\(\Psi(x,t)=\int K\,\Psi(x',0)\,dx'\)
+\(\Psi(x,t)=\int K(x,t;x',0)\,\Psi(x',0)\,dx'\)
 mittels Gaußintegralen exakt auf die oben gefundene Lösung.
 
 \item \textbf{Zeitabhängige Unschärfen}\\

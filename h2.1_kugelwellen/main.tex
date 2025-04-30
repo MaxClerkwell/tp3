@@ -1,10 +1,9 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{physics}
-\usepackage{siunitx}
-\usepackage{hyperref}
+\usepackage[utf8]{inputenc}       % UTF-8 Zeichencodierung
+\usepackage[T1]{fontenc}          % T1-Schriftkodierung für korrekte Anführungszeichen
+\usepackage{amsmath,amssymb}      % Mathe-Erweiterungen
+\usepackage{physics}              % \vb*, \dv, \pdv, etc.
+\usepackage{hyperref}             % Verlinkungen
 
 \begin{document}
 
@@ -16,11 +15,11 @@ i\hbar\,\frac{\partial}{\partial t}\Psi(\vb*{x},t)
 =
 -\frac{\hbar^2}{2m}\,\nabla^2\Psi(\vb*{x},t)\,.
 \]
-Im Folgenden zeigen wir, dass sich in \( \vb*{x}\neq \vb*{0} \) spezielle Lösungen in Form von Kugelwellen
+Im Folgenden zeigen wir, dass sich in \(\vb*{x}\neq \vb*{0}\) spezielle Lösungen in Form von Kugelwellen
 \[
 \Psi(\vb*{x},t)
 = A\,\frac{1}{r}\,\exp\bigl(i\,(k\,r - \omega\,t)\bigr),
-\qquad
+\quad
 r = \lvert \vb*{x}\rvert,
 \quad
 \omega = \frac{\hbar k^2}{2m},
@@ -41,8 +40,8 @@ mit Konstanten \(A\), \(k\) und \(\omega\).
 Für radialsymmetrische Funktionen \(f(r)\) gilt in Kugelkoordinaten
 \[
 \nabla^2 f(r)
-= \frac{1}{r^2}\,\frac{\dd}{\dd r}
-\Bigl(r^2\,\frac{\dd f}{\dd r}\Bigr).
+= \frac{1}{r^2}\,\frac{\mathrm{d}}{\mathrm{d}r}
+\Bigl(r^2\,\frac{\mathrm{d}f}{\mathrm{d}r}\Bigr).
 \]
 Man zeigt (durch Einsetzen von \(f(r) = e^{ikr}/r\)), dass
 \[
@@ -52,15 +51,11 @@ Man zeigt (durch Einsetzen von \(f(r) = e^{ikr}/r\)), dass
 Damit ergibt sich auf der rechten Seite der Schrödinger-Gleichung
 \[
 -\frac{\hbar^2}{2m}\,\nabla^2\Psi
-= -\frac{\hbar^2}{2m}\,
-\bigl(-k^2\,\frac{e^{i(kr-\omega t)}}{r}\bigr)\,A
 = \frac{\hbar^2 k^2}{2m}\,\Psi.
 \]
 Die linke Seite liefert
 \[
 i\hbar\,\frac{\partial\Psi}{\partial t}
-= i\hbar\,\bigl(-i\omega\bigr)\,
-A\,\frac{e^{i(kr-\omega t)}}{r}
 = \hbar\omega\,\Psi.
 \]
 Beide Seiten stimmen überein, wenn
@@ -79,25 +74,12 @@ Für eine Wellenfunktion \(\Psi\) ist der Strom
 \vb*{j}(\vb*{x},t)
 = \frac{\hbar}{2mi}\,\bigl(\Psi^*\,\nabla\Psi - \Psi\,\nabla\Psi^*\bigr).
 \]
-Da \(\Psi\) nur von \(r\) abhängt und \(\nabla \Psi = \hat{\vb*{r}}\,\frac{\dd\Psi}{\dd r}\),
-ergibt sich
+Da \(\Psi\) nur von \(r\) abhängt und \(\nabla \Psi = \hat{\vb*{r}}\,\frac{\mathrm{d}\Psi}{\mathrm{d}r}\),
+ergibt sich nach etwas Rechnung
 \[
-\frac{\dd}{\dd r}\Bigl(\frac{e^{i(kr-\omega t)}}{r}\Bigr)
-= \frac{e^{i(kr-\omega t)}}{r^2}\,(ikr - 1),
+\vb*{j}(r)
+= \hat{\vb*{r}}\,\frac{\hbar k}{m}\,\frac{\lvert A\rvert^2}{r^2}.
 \]
-also
-\[
-\nabla\Psi
-= \hat{\vb*{r}}\,
-A\,\frac{e^{i(kr-\omega t)}}{r^2}\,(ikr - 1).
-\]
-Einsetzen liefert nach etwas Rechnung
-\[
-j_r(r)
-= \hat{\vb*{r}}\cdot\vb*{j}
-= \frac{\hbar k}{m}\,\frac{\lvert A\rvert^2}{r^2}.
-\]
-Alle Tangentialkomponenten verschwinden, da keine Winkelabhängigkeit vorliegt.
 
 \paragraph{Kontinuitätsgleichung.}
 Die Kontinuitätsgleichung fordert
@@ -106,40 +88,32 @@ Die Kontinuitätsgleichung fordert
 \qquad
 \rho = \lvert \Psi\rvert^2 = \frac{\lvert A\rvert^2}{r^2}.
 \]
-Offensichtlich ist \(\rho\) zeitunabhängig, also \(\partial_t\rho=0\). Weiter gilt
+Offensichtlich ist \(\rho\) zeitunabhängig, also \(\partial_t\rho=0\), und
 \[
 \nabla\!\cdot\!\vb*{j}
-= \frac{1}{r^2}\,\frac{\dd}{\dd r}\bigl(r^2 j_r(r)\bigr)
-= \frac{1}{r^2}\,\frac{\dd}{\dd r}\Bigl(r^2\,\frac{\hbar k}{m}\,\frac{\lvert A\rvert^2}{r^2}\Bigr)
-= 0.
+= \frac{1}{r^2}\,\frac{\mathrm{d}}{\mathrm{d}r}\bigl(r^2 j_r(r)\bigr)
+= 0,
 \]
-Somit ist die Kontinuitätsgleichung erfüllt.
+sodass die Kontinuitätsgleichung erfüllt ist.
 
 \subsection*{(c) Wahrscheinlichkeitsfluss durch geschlossene Oberflächen}
 
-Wir betrachten
+Der Fluss durch eine geschlossene Fläche \(S\) ergibt sich zu
 \[
 \Phi_S
-= \oint_S \vb*{j}\cdot \dd\vb*{S}
-= \oint_S j_r(r)\,r^2\,\dd\Omega
+= \oint_S \vb*{j}\cdot \mathrm{d}\vb*{S}
 = \frac{\hbar k}{m}\,\lvert A\rvert^2
-\;\oint_S \dd\Omega.
+\;\oint_S \mathrm{d}\Omega.
 \]
-
 \begin{itemize}
-  \item[(i)] Wenn \(S\) den Ursprung \((r=0)\) einschließt, deckt die Fläche alle Richtungen ab, also
-  \(\displaystyle\oint_S \dd\Omega = 4\pi\). Damit
-  \[
-    \Phi_S = \frac{4\pi\hbar k}{m}\,\lvert A\rvert^2
-    \quad(\text{für }0\in V_S).
-  \]
-  \item[(ii)] Schließt \(S\) den Ursprung nicht ein, liegt im inneren Volumen kein Quellen-/Senkenpunkt,
-  und da \(\nabla\!\cdot\!\vb*{j}=0\) für \(r\neq0\), ergibt sich per Gaußscher Integralsatz
-  \(\Phi_S=0\).
+  \item[(i)] Schließt \(S\) den Ursprung ein (\(0\in V_S\)), so ist
+  \(\oint_S \mathrm{d}\Omega = 4\pi\) und
+  \(\Phi_S = \frac{4\pi\hbar k}{m}\,\lvert A\rvert^2\).
+  \item[(ii)] Ohne Ursprung im Inneren gilt \(\nabla\!\cdot\!\vb*{j}=0\) für \(r\neq0\)
+  und nach Gauß’ Gesetz \(\Phi_S=0\).
 \end{itemize}
 
-Physikalisch bedeutet dies: Die Kugelwelle transportiert \emph{Outward}-Fluss, der aus
-einem punktförmigen Ursprung \(r=0\) „emittiert“ wird; Ringsherum hat man einen konstanten
-stromaufbauenden Fluss.
+Physikalisch wird der Fluss aus einem punktförmigen Zentrum ausgesandt, während
+außerhalb kein Nettofluss entsteht.
 
 \end{document}
