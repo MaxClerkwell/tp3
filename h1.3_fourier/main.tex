@@ -156,21 +156,80 @@ und
 \langle \Delta p^2\rangle = \int_{-\infty}^{\infty} (p-\langle p\rangle)^2\,|\hat{f}(p)|^2\,dp.
 \]
 
-Da \( f(x) \) (und folglich auch \( |f(x)|^2 \)) eine gerade Funktion ist, folgt \( \langle x\rangle = 0 \). Entsprechendes gilt für \( \langle p\rangle \). Es zeigt sich, dass (bei korrekter Normierung) für diese Gauß-Funktion
+Betrachte die gaußförmige Wellenfunktion:
 \[
-\langle \Delta x^2\rangle = \frac{\sigma^2}{2} \quad \text{und} \quad \langle \Delta p^2\rangle = \frac{1}{2\sigma^2}.
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{x^2}{2\sigma^2}}
 \]
-Daraus folgt das Unschärfeprodukt:
+
+Da \( x \cdot |f(x)|^2 \) ungerade ist, gilt:
 \[
-\langle \Delta x^2\rangle \cdot \langle \Delta p^2\rangle = \frac{\sigma^2}{2}\cdot\frac{1}{2\sigma^2} = \frac{1}{4}.
+\langle x \rangle = \int_{-\infty}^{\infty} x |f(x)|^2 dx = 0
 \]
+
+Normierung von \( f(x)^2 \):
 \[
-\boxed{\langle \Delta x^2\rangle \langle \Delta p^2\rangle = \frac{1}{4}.}
+A \int_{-\infty}^{\infty} \left( \frac{1}{\sigma^2 2\pi} e^{-\frac{x^2}{\sigma^2}} \right) dx = 1
+\quad \Rightarrow \quad A = 2\sigma\sqrt{\pi}
+\]
+
+Berechnung der Ortsunschärfe:
+\[
+\langle \Delta x^2 \rangle = A \int_{-\infty}^\infty (x - \langle x \rangle)^2 |f(x)|^2 dx = A \int_{-\infty}^{\infty} x^2 |f(x)|^2 dx
+= 2\sigma\sqrt{\pi} \int_{-\infty}^{\infty} x^2 \frac{1}{\sigma^2 2\pi} e^{-x^2/\sigma^2} dx
+\]
+
+Substitution: \( u = \frac{x}{\sigma} \Rightarrow x = \sigma u, dx = \sigma du \)
+
+\[
+= 2\sigma \sqrt{\pi} \int_{-\infty}^{\infty} \sigma^2 u^2 \cdot \frac{1}{\sigma^2 2\pi} e^{-u^2} \, du
+= 2\sigma \sqrt{\pi} \cdot \frac{\sigma}{2\pi} \int_{-\infty}^{\infty} u^2 e^{-u^2} \, du
+= 2\sigma \sqrt{\pi} \cdot \frac{\sigma}{2\pi} \cdot \frac{\sqrt{\pi}}{2}
+= \frac{\sigma^2}{2}
+\]
+
+Fouriertransformierte Wellenfunktion:
+\[
+\hat{f}(p) = \frac{1}{\sqrt{2\pi}} e^{-\frac{p^2 \sigma^2}{2}}
+\]
+
+Da \( p \cdot |\hat{f}(p)|^2 \) ungerade ist:
+\[
+\langle p \rangle = \int_{-\infty}^{\infty} p |\hat{f}(p)|^2 dp = 0
+\]
+
+Normierung von \( |\hat{f}(p)|^2 \):
+\[
+B \int_{-\infty}^{\infty} \left( \frac{1}{2\pi} e^{-\sigma^2 p^2} \right) dp = 1
+\quad \Rightarrow \quad B = 2\sqrt{\pi} \,\sigma
+\]
+
+Impulsunschärfe:
+\[
+\langle \Delta p^2 \rangle = B \int_{-\infty}^{\infty} p^2 |\hat{f}(p)|^2 dp
+= 2\sqrt{\pi} \,\sigma \int_{-\infty}^{\infty} p^2 \frac{1}{2\pi} e^{-\sigma^2 p^2} dp
+\]
+
+Substitution: \( u = \sigma p \Rightarrow p = \frac{u}{\sigma}, dp = \frac{du}{\sigma} \)
+
+\[
+= \frac{\sigma}{\sqrt{\pi}} \int_{-\infty}^{\infty} \frac{u^2}{\sigma^2} e^{-u^2} \cdot \frac{du}{\sigma}
+= \frac{1}{\sigma^2 \sqrt{\pi}} \int_{-\infty}^{\infty} u^2 e^{-u^2} \, du
+= \frac{1}{\sigma^2 \sqrt{\pi}} \cdot \frac{\sqrt{\pi}}{2}
+= \frac{1}{2\sigma^2}
+\]
+
+Unschärferelation:
+\[
+\langle \Delta x^2 \rangle \cdot \langle \Delta p^2 \rangle = \frac{\sigma^2}{2} \cdot \frac{1}{2\sigma^2} = \frac{1}{4}
+\]
+
+\[
+\boxed{\langle \Delta x^2 \rangle \cdot \langle \Delta p^2 \rangle = \frac{1}{4}}
 \]
 
 \medskip
 
 \textbf{Bemerkung:}\\
-Unter Verwendung der hier gewählten Fourier-Transformationskonventionen und –normierungen erfüllt die Gauß-Funktion (nach entsprechender Normierung) die untere Schranke der Heisenbergschen Unschärferelation.
+Unter Verwendung der hier gewählten Fourier-Transformationskonventionen und –normierungen erfüllt die Gauss-Funktion (nach entsprechender Normierung) die untere Schranke der Heisenbergschen Unschärferelation.
 
 \end{document}
