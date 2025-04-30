@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{hyperref}
+
+\begin{document}
+
+\section*{Lösung zu H2.2: Komplexes Potential}
+
+Wir betrachten die zeitabhängige Schrödinger-Gleichung im Einklang mit einem komplexen Potential
+\[
+V(\mathbf{x}) = v(\mathbf{x}) + i\,w(\mathbf{x}),
+\]
+wobei \(v(\mathbf{x})\) und \(w(\mathbf{x})\) reelle Funktionen sind.
+
+\subsection*{(a) Herleitung der modifizierten Kontinuitätsgleichung}
+
+Die Schrödinger-Gleichung und ihre komplex konjugierte lauten
+\begin{align}
+  i\hbar\,\frac{\partial}{\partial t}\Psi(\mathbf{x},t) &= \Bigl[-\frac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) + i\,w(\mathbf{x})\Bigr]\Psi(\mathbf{x},t), \label{schroedinger}\\
+  -i\hbar\,\frac{\partial}{\partial t}\Psi^*(\mathbf{x},t) &= \Bigl[-\frac{\hbar^2}{2m}\nabla^2 + v(\mathbf{x}) - i\,w(\mathbf{x})\Bigr]\Psi^*(\mathbf{x},t).
+\end{align}
+Wir definieren die Wahrscheinlichkeitsdichte
+\[
+\rho(\mathbf{x},t) = \Psi^*(\mathbf{x},t)\,\Psi(\mathbf{x},t)
+\]
+und den Wahrscheinlichkeitsstrom
+\[
+\mathbf{j}(\mathbf{x},t)
+= \frac{\hbar}{2mi}\Bigl(\Psi^*\nabla\Psi - (\nabla\Psi^*)\,\Psi\Bigr).
+\]
+Leiten wir nun \(\rho\) nach der Zeit ab:
+\begin{align*}
+  \frac{\partial \rho}{\partial t}
+  &= \Psi^*\,\frac{\partial \Psi}{\partial t}
+     + \frac{\partial \Psi^*}{\partial t}\,\Psi \\
+  &= \Psi^*\,
+     \frac{1}{i\hbar}\Bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v + i\,w\Bigr]\Psi
+     \;-\;\Psi\,
+     \frac{1}{i\hbar}\Bigl[-\tfrac{\hbar^2}{2m}\nabla^2 + v - i\,w\Bigr]\Psi^*.
+\end{align*}
+Die Terme mit dem reellen Anteil \(v\) heben sich weg, ebenso die kinetischen Terme geben nach partieller Integration genau den Divergenzbeitrag \(-\nabla\cdot\mathbf{j}\). Übrig bleibt jedoch
+\[
+\frac{\partial \rho}{\partial t}
++ \nabla\cdot\mathbf{j}
+= -\frac{2}{\hbar}\;w(\mathbf{x})\;\rho(\mathbf{x},t).
+\]
+Diese Gleichung ist die \emph{modifizierte Kontinuitätsgleichung} für ein komplexes Potential. 
+Zum Vergleich: Für ein rein reelles Potential \(V=v\) wäre der rechte Seiten-Ausdruck Null, und es gilt
+\[
+\frac{\partial \rho}{\partial t} + \nabla\cdot\mathbf{j} = 0,
+\]
+also die gewöhnliche Kontinuitätsgleichung.
+
+\subsection*{(b) Erhaltung der Gesamtwahrscheinlichkeit}
+
+Wir betrachten die Gesamtwahrscheinlichkeit (bzw. Norm)
+\[
+P(t) \;=\; \int_{\mathbb{R}^3} \rho(\mathbf{x},t)\,\mathrm{d}^3x.
+\]
+Differenzieren wir nach der Zeit und nutzen die modifizierte Kontinuitätsgleichung,
+\begin{align*}
+  \frac{\mathrm{d}P}{\mathrm{d}t}
+  &= \int_{\mathbb{R}^3} \frac{\partial \rho}{\partial t}\,\mathrm{d}^3x
+   = -\int_{\mathbb{R}^3} \nabla\cdot\mathbf{j}\,\mathrm{d}^3x
+     - \frac{2}{\hbar}\int_{\mathbb{R}^3} w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.
+\end{align*}
+Der erste Integralterm verschwindet, sofern \(\mathbf{j}\) am Unendlichen ausreichend schnell gegen Null geht. Damit ergibt sich
+\[
+\boxed{
+\frac{\mathrm{d}P}{\mathrm{d}t}
+= - \frac{2}{\hbar}\int_{\mathbb{R}^3} w(\mathbf{x})\,\rho(\mathbf{x},t)\,\mathrm{d}^3x.
+}
+\]
+\begin{itemize}
+  \item Ist \(w(\mathbf{x}) > 0\) in einem Gebiet, so nimmt \(P(t)\) ab: Das System \emph{verliert} Wahrscheinlichkeit, was man als partielle \emph{Absorption} oder Austritt von Teilchen interpretieren kann.
+  \item Ist \(w(\mathbf{x}) < 0\), so wächst \(P(t)\): Man spricht von einer \emph{Verstärkung} oder Quelle von Teilchen.
+  \item Insgesamt ist \(P(t)\) im Allgemeinen \emph{nicht} erhalten, im Gegensatz zum Fall eines reellen Potentials.
+\end{itemize}
+
+\medskip
+
+\textbf{Interpretation:} Ein imaginärer Anteil des Potentials kann als effektiver „Quell‐“ bzw. „Senken“-Term für Teilchen betrachtet werden. In der Theorie offener Quanten­systeme wird dies oft als Modell für dissipative Prozesse (z.\,B. Teilchenverlust durch Reaktionen, Absorption in einem Bildgebungsprozess) verwendet.
+
+\end{document}

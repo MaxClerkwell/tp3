@@ -1,0 +1,145 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\begin{document}
+
+\section*{Lösung zu H2.1 Kugelwellen}
+
+Wir betrachten die zeitabhängige Schrödinger-Gleichung für ein freies Teilchen der Masse \(m\) in drei Dimensionen,
+\[
+i\hbar\,\frac{\partial}{\partial t}\Psi(\vb*{x},t)
+=
+-\frac{\hbar^2}{2m}\,\nabla^2\Psi(\vb*{x},t)\,.
+\]
+Im Folgenden zeigen wir, dass sich in \( \vb*{x}\neq \vb*{0} \) spezielle Lösungen in Form von Kugelwellen
+\[
+\Psi(\vb*{x},t)
+= A\,\frac{1}{r}\,\exp\bigl(i\,(k\,r - \omega\,t)\bigr),
+\qquad
+r = \lvert \vb*{x}\rvert,
+\quad
+\omega = \frac{\hbar k^2}{2m},
+\]
+finden lassen.
+
+\subsection*{(a) Nachweis der Kugelwellen-Lösung}
+
+\paragraph{Ansatz.}
+Wir setzen
+\[
+\Psi(\vb*{x},t)
+= A\,\frac{e^{i(kr - \omega t)}}{r},
+\]
+mit Konstanten \(A\), \(k\) und \(\omega\).
+
+\paragraph{Laplacian in Kugelkoordinaten.}
+Für radialsymmetrische Funktionen \(f(r)\) gilt in Kugelkoordinaten
+\[
+\nabla^2 f(r)
+= \frac{1}{r^2}\,\frac{\dd}{\dd r}
+\Bigl(r^2\,\frac{\dd f}{\dd r}\Bigr).
+\]
+Man zeigt (durch Einsetzen von \(f(r) = e^{ikr}/r\)), dass
+\[
+\nabla^2\Bigl(\frac{e^{ikr}}{r}\Bigr)
+= -k^2\,\frac{e^{ikr}}{r}.
+\]
+Damit ergibt sich auf der rechten Seite der Schrödinger-Gleichung
+\[
+-\frac{\hbar^2}{2m}\,\nabla^2\Psi
+= -\frac{\hbar^2}{2m}\,
+\bigl(-k^2\,\frac{e^{i(kr-\omega t)}}{r}\bigr)\,A
+= \frac{\hbar^2 k^2}{2m}\,\Psi.
+\]
+Die linke Seite liefert
+\[
+i\hbar\,\frac{\partial\Psi}{\partial t}
+= i\hbar\,\bigl(-i\omega\bigr)\,
+A\,\frac{e^{i(kr-\omega t)}}{r}
+= \hbar\omega\,\Psi.
+\]
+Beide Seiten stimmen überein, wenn
+\[
+\hbar\omega = \frac{\hbar^2 k^2}{2m}
+\;\;\Longrightarrow\;\;
+\omega = \frac{\hbar k^2}{2m},
+\]
+was zu zeigen war.
+
+\subsection*{(b) Wahrscheinlichkeitsstromdichte und Kontinuitätsgleichung}
+
+\paragraph{Definition des Wahrscheinlichkeitsstroms.}
+Für eine Wellenfunktion \(\Psi\) ist der Strom
+\[
+\vb*{j}(\vb*{x},t)
+= \frac{\hbar}{2mi}\,\bigl(\Psi^*\,\nabla\Psi - \Psi\,\nabla\Psi^*\bigr).
+\]
+Da \(\Psi\) nur von \(r\) abhängt und \(\nabla \Psi = \hat{\vb*{r}}\,\frac{\dd\Psi}{\dd r}\),
+ergibt sich
+\[
+\frac{\dd}{\dd r}\Bigl(\frac{e^{i(kr-\omega t)}}{r}\Bigr)
+= \frac{e^{i(kr-\omega t)}}{r^2}\,(ikr - 1),
+\]
+also
+\[
+\nabla\Psi
+= \hat{\vb*{r}}\,
+A\,\frac{e^{i(kr-\omega t)}}{r^2}\,(ikr - 1).
+\]
+Einsetzen liefert nach etwas Rechnung
+\[
+j_r(r)
+= \hat{\vb*{r}}\cdot\vb*{j}
+= \frac{\hbar k}{m}\,\frac{\lvert A\rvert^2}{r^2}.
+\]
+Alle Tangentialkomponenten verschwinden, da keine Winkelabhängigkeit vorliegt.
+
+\paragraph{Kontinuitätsgleichung.}
+Die Kontinuitätsgleichung fordert
+\[
+\frac{\partial \rho}{\partial t} + \nabla\!\cdot\!\vb*{j} = 0,
+\qquad
+\rho = \lvert \Psi\rvert^2 = \frac{\lvert A\rvert^2}{r^2}.
+\]
+Offensichtlich ist \(\rho\) zeitunabhängig, also \(\partial_t\rho=0\). Weiter gilt
+\[
+\nabla\!\cdot\!\vb*{j}
+= \frac{1}{r^2}\,\frac{\dd}{\dd r}\bigl(r^2 j_r(r)\bigr)
+= \frac{1}{r^2}\,\frac{\dd}{\dd r}\Bigl(r^2\,\frac{\hbar k}{m}\,\frac{\lvert A\rvert^2}{r^2}\Bigr)
+= 0.
+\]
+Somit ist die Kontinuitätsgleichung erfüllt.
+
+\subsection*{(c) Wahrscheinlichkeitsfluss durch geschlossene Oberflächen}
+
+Wir betrachten
+\[
+\Phi_S
+= \oint_S \vb*{j}\cdot \dd\vb*{S}
+= \oint_S j_r(r)\,r^2\,\dd\Omega
+= \frac{\hbar k}{m}\,\lvert A\rvert^2
+\;\oint_S \dd\Omega.
+\]
+
+\begin{itemize}
+  \item[(i)] Wenn \(S\) den Ursprung \((r=0)\) einschließt, deckt die Fläche alle Richtungen ab, also
+  \(\displaystyle\oint_S \dd\Omega = 4\pi\). Damit
+  \[
+    \Phi_S = \frac{4\pi\hbar k}{m}\,\lvert A\rvert^2
+    \quad(\text{für }0\in V_S).
+  \]
+  \item[(ii)] Schließt \(S\) den Ursprung nicht ein, liegt im inneren Volumen kein Quellen-/Senkenpunkt,
+  und da \(\nabla\!\cdot\!\vb*{j}=0\) für \(r\neq0\), ergibt sich per Gaußscher Integralsatz
+  \(\Phi_S=0\).
+\end{itemize}
+
+Physikalisch bedeutet dies: Die Kugelwelle transportiert \emph{Outward}-Fluss, der aus
+einem punktförmigen Ursprung \(r=0\) „emittiert“ wird; Ringsherum hat man einen konstanten
+stromaufbauenden Fluss.
+
+\end{document}

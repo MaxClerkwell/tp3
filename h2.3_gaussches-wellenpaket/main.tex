@@ -1,0 +1,93 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb,enumitem}
+\begin{document}
+\section*{Lösung H2.3 Gaußsches Wellenpaket}
+
+Gegeben sei
+\[
+\Psi(x,t)
+=\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+\tilde\Psi(k)\,e^{i(kx-\omega(k)t)}\,dk,
+\quad
+\omega(k)=\frac{\hbar k^2}{2m},
+\quad
+\tilde\Psi(k)=A\,e^{-d^2(k-k_0)^2}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item \textbf{Wahrscheinlichkeitsdichte \(P=|\Psi|^2\)}\\
+Wir fassen im Exponenten quadratisch zusammen:
+\[
+-d^2(k-k_0)^2 + i k x - i\frac{\hbar k^2}{2m}t
+=
+-\Bigl(d^2 + i\frac{\hbar t}{2m}\Bigr)k^2
++ k\Bigl(2d^2k_0 + i x\Bigr)
+- d^2k_0^2.
+\]
+Mithilfe
+\(\displaystyle\int e^{-αk^2+βk}\,dk=\sqrt{\frac{\pi}{α}}\,e^{β^2/(4α)}\)
+\((\Re α>0)\) folgt nach Rechnung
+\[
+\Psi(x,t)
+=A\sqrt{\frac{2d^2}{2d^2 + \tfrac{i\hbar t}{m}}}
+\exp\!\Biggl[
+-\frac{(x-vt)^2}{4\bigl(d^2 + \tfrac{i\hbar t}{2m}\bigr)}
++ i k_0 x - i\frac{\hbar k_0^2}{2m}t
+\Biggr],
+\]
+mit \(v=\hbar k_0/m\). Daraus
+\[
+P(x,t)=|\Psi|^2
+=\frac{d}{\sqrt{2\pi\,(1+\Delta^2)}}\,
+\exp\!\Bigl[-\frac{(x-vt)^2}{2\,d^2(1+\Delta^2)}\Bigr],
+\quad
+\Delta=\frac{\hbar t}{2 m d^2}.
+\]
+
+\item \textbf{Charakteristische Verdopplungszeit}\\
+Die Breite \(\sigma_x(t)=d\sqrt{1+\Delta^2}\) verdoppelt sich für
+\(\Delta=\sqrt{3}\), also
+\[
+t_{\rm char}
+=\frac{2m d^2}{\hbar}\,\sqrt{3}.
+\]
+\begin{itemize}[leftmargin=*]
+  \item Tennisball (\(m=5{,}75\cdot10^{-2}\,\mathrm{kg},\,d=6{,}5\cdot10^{-2}\,\mathrm m\)):
+  \[
+  t\approx2{,}5\times10^{23}\,\mathrm{Jahre}.
+  \]
+  \item Proton (\(m=1{,}7\cdot10^{-27}\,\mathrm{kg},\,d=10^{-15}\,\mathrm m\)):
+  \[
+  t\approx6\times10^{-23}\,\mathrm s.
+  \]
+\end{itemize}
+
+\item \textbf{Verifikation mit dem Propagator}\\
+Der freie Propagator
+\[
+K(x,t;x',0)
+=\sqrt{\frac{m}{2\pi i\hbar\,t}}
+\exp\!\Bigl[i\frac{m(x-x')^2}{2\hbar t}\Bigr]
+\]
+führt über
+\(\Psi(x,t)=\int K\,\Psi(x',0)\,dx'\)
+mittels Gaußintegralen exakt auf die oben gefundene Lösung.
+
+\item \textbf{Zeitabhängige Unschärfen}\\
+Aus \(P(x,t)\) folgt
+\[
+\Delta x^2 = d^2\bigl(1+\Delta^2\bigr),
+\quad
+\Delta p^2 = \frac{\hbar^2}{4d^2},
+\]
+also
+\[
+\Delta x\,\Delta p
+=\frac{\hbar}{2}\sqrt{1+\Delta^2}
+\ge\frac{\hbar}{2}.
+\]
+\end{enumerate}
+
+\end{document}
