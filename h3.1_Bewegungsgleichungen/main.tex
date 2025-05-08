@@ -1,0 +1,96 @@
+% main.tex – Ausführliche Herleitung der Bewegungsgleichung für ⟨x²⟩
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\title{Ausführliche Herleitung der Bewegungsgleichung für $\langle x^2 \rangle$}
+\author{}
+\date{}
+\maketitle
+
+\section*{Einleitung}
+In der Quantenmechanik beschreibt der Erwartungswert eines Operators die physikalisch gemessenen Mittelwerte. Für die Ortsquadratskomponente $x^2$ interessiert uns, wie sich dieser Erwartungswert im Laufe der Zeit entwickelt. Mithilfe des Ehrenfest-Theorems lässt sich eine Bewegungsgleichung für $\langle x^2\rangle$ ableiten, die ein quantenmechanisches Analogon zur klassischen Bewegungsgleichung darstellt.
+
+\section{Theoretische Grundlagen}
+\subsection{Operatoren und Erwartungswerte}
+Sei $A$ ein Operator im Hilbertraum eines quantenmechanischen Systems mit Zustandsvektor $\ket{\psi(t)}$. Dann definiert sich der Erwartungswert von $A$ durch
+
+$$
+  \langle A \rangle(t) = \bra{\psi(t)} A \ket{\psi(t)}.
+$$
+
+Der Zeitverlauf von $\ket{\psi(t)}$ wird durch die Schrödinger-Gleichung bestimmt:
+
+$$
+  i\hbar \frac{\partial}{\partial t} \ket{\psi(t)} = H \ket{\psi(t)},
+$$
+
+wobei \$H\$ der Hamiltonoperator ist.
+
+\subsection{Ehrenfest-Theorem}
+Für einen zeitunabhängigen Operator $A$ gilt gemäß dem Ehrenfest-Theorem:
+
+$$
+  \frac{d}{dt} \langle A \rangle = \frac{i}{\hbar} \langle [H, A] \rangle.
+$$
+
+\subsection{Hamiltonoperator des Teilchens}
+Wir betrachten ein Teilchen der Masse $m$ im eindimensionalen Potential $V(x)$. Der Hamiltonoperator lautet:
+
+$$
+  H = \frac{p_x^2}{2m} + V(x),
+$$
+
+wobei $p_x$ der Impulsoperator in $x$-Richtung ist mit der kanonischen Vertauschungsrelation $[x, p_x] = i\hbar$.
+
+\section{Herleitung für $A = x^2$}
+Da $x^2$ keine explizite Zeitabhängigkeit besitzt, folgt aus dem Ehrenfest-Theorem:
+
+$$
+  \frac{d}{dt} \langle x^2 \rangle = \frac{i}{\hbar} \langle [H, x^2] \rangle.
+$$
+
+\subsection{Kommutator $[H, x^2]$}
+Weil $[V(x), x^2] = 0$ (beide sind Funktionen von $x$), ergibt sich:
+
+$$
+  [H, x^2] = \frac{1}{2m} [p_x^2, x^2].
+$$
+
+Mit der Produktregel für Kommutatoren $[B^2, C] = B[B,C] + [B,C]B$ und
+
+$$
+  [p_x, x^2] = p_x x^2 - x^2 p_x = -2i\hbar \, x,
+$$
+
+bekommt man:
+
+$$
+  [p_x^2, x^2] = p_x [p_x, x^2] + [p_x, x^2] p_x = -2i\hbar (p_x x + x p_x).
+$$
+
+\subsection{Endgültige Bewegungsgleichung}
+Einsetzen in die Zeitableitung liefert:
+
+$$
+  \frac{d}{dt} \langle x^2 \rangle
+  = \frac{i}{\hbar} \cdot \frac{1}{2m} \langle -2i\hbar (p_x x + x p_x) \rangle
+  = \frac{\langle x p_x \rangle + \langle p_x x \rangle}{m}.
+$$
+
+\section*{Schlussfolgerung}
+Es wurde gezeigt, dass der Erwartungswert $\langle x^2 \rangle$ die Bewegungsgleichung
+
+$$
+  \frac{d}{dt} \langle x^2 \rangle = \frac{\langle x p_x \rangle + \langle p_x x \rangle}{m}
+$$
+
+erfüllt. Diese Beziehung ist eine direkte Konsequenz des Ehrenfest-Theorems und verbindet quantenmechanische Operatoren mit klassischen physikalischen Größen.
+
+\end{document}
