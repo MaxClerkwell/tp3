@@ -1,0 +1,166 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern}
+\usepackage{microtype}
+\theoremstyle{definition}
+\newtheorem*{remark}{Bemerkung}
+
+\begin{document}
+
+\section*{H3.3 Virialsatz in der Quantenmechanik}
+
+\noindent
+Wir betrachten ein eindimensionales Quantensystem mit Hamiltonoperator
+\[
+H \;=\; T + V \;=\; \frac{p^2}{2m} + V(x)\,,
+\]
+und eine quadratintegrierbare Eigenfunktion $\psi(x)$ der stationären Schrödinger-Gleichung
+\[
+H\,\psi(x) \;=\; E\,\psi(x).
+\]
+Der Erwartungswert eines Operators $A$ im Zustand~$\psi$ sei definiert als
+\[
+\langle A\rangle_\psi \;=\;
+\int_{-\infty}^{\infty}\! \psi^*(x)\,\bigl(A\,\psi(x)\bigr)\,\mathrm{d}x.
+\]
+
+\subsection*{(a) Verschwindender Erwartungswert des Kommutators}
+
+\begin{proof}
+Sei $f$ ein beliebiger (wohlgewählter) Operator. Wir zeigen:
+\[
+\bigl\langle [H,f]\bigr\rangle_\psi \;=\; 0.
+\]
+\begin{align*}
+[H,f] &= H\,f \;-\; f\,H,\\
+\bigl\langle [H,f]\bigr\rangle_\psi
+&= \langle \psi \mid H\,f \mid \psi \rangle
+  - \langle \psi \mid f\,H \mid \psi \rangle.
+\end{align*}
+Da $\psi$ Eigenzustand von $H$ mit Eigenwert $E$ ist, gilt
+\[
+H\,\psi = E\,\psi
+\;\;\Longrightarrow\;\;
+\langle \psi \mid H\,f \mid \psi \rangle
+= \langle H\,\psi \mid f \mid \psi \rangle
+= E\,\langle \psi \mid f \mid \psi \rangle,
+\]
+bzw.
+\[
+\langle \psi \mid f\,H \mid \psi \rangle
+= \langle \psi \mid f\,(H\,\psi) \rangle
+= E\,\langle \psi \mid f \mid \psi \rangle.
+\]
+Einsetzen liefert
+\[
+\bigl\langle [H,f]\bigr\rangle_\psi
+= E\,\langle f \rangle_\psi - E\,\langle f \rangle_\psi
+= 0.
+\]
+\end{proof}
+
+\subsection*{(b) Herleitung des Virialsatzes für $V(x)=\alpha\,x^N$}
+
+Wir wählen im vorigen Ergebnis $f = p\,x$ und nutzen
+\[
+p = -\,\mathrm{i}\hbar\,\frac{\mathrm{d}}{\mathrm{d}x},
+\qquad
+T = \frac{p^2}{2m}.
+\]
+Dann gilt nach Teil (a)
+\[
+\bigl\langle [H,\;p\,x]\bigr\rangle_\psi = 0
+\quad\Longrightarrow\quad
+\bigl\langle [T,\;p\,x]\bigr\rangle_\psi
++
+\bigl\langle [V,\;p\,x]\bigr\rangle_\psi
+= 0.
+\]
+
+\paragraph{1) Kommutator mit der kinetischen Energie:}
+\[
+[T,\;p\,x]
+= \frac{1}{2m}\,[\,p^2,\;p\,x\,]
+= \frac{1}{2m}\bigl(p^2\,p\,x - p\,x\,p^2\bigr).
+\]
+Nutzen wir wiederholt $[A,BC]=[A,B]C + B[A,C]$ sowie
+\[
+[p,x] = -\,\mathrm{i}\hbar,
+\quad
+[p,p]=0,
+\]
+so findet man
+\[
+[p^2,\;p\,x]
+= p\,[p,p\,x] + [p,p\,x]\,p
+= -2\,\mathrm{i}\hbar\,p^2
+\;\;\Longrightarrow\;\;
+[T,\;p\,x]
+= -\,\mathrm{i}\hbar\,\frac{p^2}{m}
+= -2\,\mathrm{i}\hbar\,T.
+\]
+Daher
+\[
+\bigl\langle [T,\;p\,x]\bigr\rangle_\psi
+= -2\,\mathrm{i}\hbar\,\langle T\rangle_\psi.
+\]
+
+\paragraph{2) Kommutator mit dem Potential:}
+Da $V=V(x)$ nur von $x$ abhängt,
+\[
+[V,\;p\,x]
+= V\,p\,x - p\,x\,V
+= [V,p]\,x
+\quad\text{und}\quad
+[V,p] = -\,\mathrm{i}\hbar\,V'(x),
+\]
+ergibt sich
+\[
+[V,\;p\,x]
+= -\,\mathrm{i}\hbar\,x\,V'(x),
+\]
+also
+\[
+\bigl\langle [V,\;p\,x]\bigr\rangle_\psi
+= -\,\mathrm{i}\hbar\,\bigl\langle x\,V'(x)\bigr\rangle_\psi.
+\]
+
+\paragraph{3) Zusammenfügen und Vereinfachen:}
+\[
+0
+= \bigl\langle [T,\;p\,x]\bigr\rangle_\psi
++ \bigl\langle [V,\;p\,x]\bigr\rangle_\psi
+= -2\,\mathrm{i}\hbar\,\langle T\rangle_\psi
+  - \mathrm{i}\hbar\,\langle x\,V'(x)\rangle_\psi.
+\]
+Division durch $-\mathrm{i}\hbar$ liefert
+\[
+2\,\langle T\rangle_\psi
+\;-\;
+\bigl\langle x\,V'(x)\bigr\rangle_\psi
+= 0.
+\]
+Für das Potential $V(x)=\alpha\,x^N$ ist
+\[
+V'(x) = \alpha\,N\,x^{N-1},
+\qquad
+x\,V'(x) = N\,\alpha\,x^N = N\,V(x),
+\]
+und somit der \emph{Virialsatz}
+\[
+\boxed{%
+2\,\langle T\rangle_\psi
+\;-\;
+N\,\langle V\rangle_\psi
+=0.
+}
+\]
+
+\begin{remark}
+Der Virialsatz liefert eine wichtige Beziehung zwischen kinetischer und potentieller Energie
+für Potenziale mit Potenzgesetz $x^N$.
+\end{remark}
+
+\end{document}
