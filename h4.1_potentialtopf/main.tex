@@ -1,0 +1,125 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\section*{Lösung zu H4.1 Potentialtopf}
+
+\subsection*{(a) Zeitentwicklung der Wellenfunktion}
+Gegeben sei
+\[
+\Psi(x,0)=\sqrt{\frac{9}{5a}}\,\sin\left(\frac{\pi x}{a}\right)\left[1+\frac{2}{3}\cos\left(\frac{\pi x}{a}\right)\right].
+\]
+Mit dem Produkt-zu-Summen-Ansatz:
+\[
+\sin\theta\cos\theta=\tfrac12\sin(2\theta)
+\]
+folgt
+\[
+\Psi(x,0)=\sqrt{\frac{9}{5a}}\Bigl[\sin\left(\frac{\pi x}{a}\right)+\tfrac{1}{3}\sin\left(\frac{2\pi x}{a}\right)\Bigr].
+\]
+Da die Eigenfunktionen
+\[
+\Psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)
+\]
+orthonormal sind, erkennt man die Fourier-Koeffizienten unmittelbar:
+\[
+c_1=\int_0^a\Psi_1(x)\Psi(x,0)\,dx=\frac{3\sqrt{2}}{2\sqrt{5}},
+\quad
+c_2=\int_0^a\Psi_2(x)\Psi(x,0)\,dx=\frac{\sqrt{2}}{2\sqrt{5}}.
+\]
+Die dazugehörigen Energien lauten
+\[
+E_n=\frac{\hbar^2\pi^2n^2}{2ma^2},
+\]
+woraus die zeitabhängige Lösung ist:
+\[
+\Psi(x,t)=c_1\Psi_1(x)e^{-iE_1t/\hbar}+c_2\Psi_2(x)e^{-iE_2t/\hbar}.
+\]
+Durch Einsetzen von $c_1,c_2$ und Rücksubstitution von $\Psi_1,\Psi_2$ erhält man gerade die in der Aufgabenstellung geforderte Form.
+
+\subsection*{(b) Erwartungswert der Energie}
+Da die Wahrscheinlichkeiten $|c_n|^2$ zeitunabhängig sind, gilt
+\[
+\langle E\rangle=|c_1|^2E_1+|c_2|^2E_2
+=\frac{9}{10}E_1+\frac{1}{10}(4E_1)
+=\frac{13}{10}E_1
+=\frac{13}{10}\frac{\hbar^2\pi^2}{2ma^2}.
+\]
+
+\subsection*{(c) Wahrscheinlichkeit im Intervall $0<x<\tfrac{a}{2}$ bei $t=\tau$}
+Allgemein gilt
+\[
+P=\int_0^{a/2}|\Psi(x,\tau)|^2\,dx
+=c_1^2\int_0^{a/2}\Psi_1^2dx+c_2^2\int_0^{a/2}\Psi_2^2dx
++2c_1c_2\cos\bigl((E_2-E_1)\tau/\hbar\bigr)\int_0^{a/2}\Psi_1\Psi_2dx.
+\]
+Mit
+\[
+\int_0^{a/2}\Psi_n^2dx=\tfrac12,
+\quad
+\int_0^{a/2}\Psi_1\Psi_2dx=\frac{4}{3\pi}
+\]
+folgt
+\[
+P=\frac12+\frac{4}{5\pi}\cos\Bigl(\frac{(E_2-E_1)\tau}{\hbar}\Bigr).
+\]
+
+\subsection*{(d) Unschärfen $\Delta x$ und $\Delta p$}
+Wir berechnen zuerst die Matrixelemente:
+\begin{align*}
+&\langle\Psi_n|x|\Psi_n\rangle=\int_0^a\Psi_n^*(x)x\Psi_n(x)\,dx=\frac{a}{2}, \\
+&\langle\Psi_1|x|\Psi_2\rangle=\frac{2}{a}\int_0^ax\sin\frac{\pi x}{a}\sin\frac{2\pi x}{a}dx
+= -\frac{16a}{9\pi^2}.
+\end{align*}
+Damit:
+\[
+\langle x\rangle=c_1^2\frac{a}{2}+c_2^2\frac{a}{2}+2c_1c_2\cos\bigl((E_2-E_1)t/\hbar\bigr)\Bigl(-\frac{16a}{9\pi^2}\Bigr)
+=\frac{a}{2}-\frac{16a}{15\pi^2}\cos\Bigl(\frac{E_2-E_1}{\hbar}t\Bigr).
+\]
+
+Die zweiten Momente:
+\begin{align*}
+&\langle\Psi_n|x^2|\Psi_n\rangle=\int_0^a\Psi_n^* x^2\Psi_n\,dx=\frac{a^2}{3}-\frac{a^2}{2n^2\pi^2}, \\
+&\langle\Psi_1|x^2|\Psi_2\rangle=\frac{2}{a}\int_0^ax^2\sin\frac{\pi x}{a}\sin\frac{2\pi x}{a}dx
+= -\frac{16a^2}{9\pi^2}.
+\end{align*}
+Daraus:
+\[
+\langle x^2\rangle=c_1^2\Bigl(\frac{a^2}{3}-\frac{a^2}{2\pi^2}\Bigr)
++c_2^2\Bigl(\frac{a^2}{3}-\frac{a^2}{8\pi^2}\Bigr)
++2c_1c_2\cos\bigl((E_2-E_1)t/\hbar\bigr)\Bigl(-\frac{16a^2}{9\pi^2}\Bigr).
+\]
+
+Für den Impulsoperator $\hat p=-i\hbar\frac{d}{dx}$ gilt:
+\begin{align*}
+&\langle\Psi_n|p|\Psi_n\rangle=0, \\
+&\langle\Psi_1|p|\Psi_2\rangle=-i\hbar\frac{2}{a}\frac{2\pi}{a}\int_0^a\sin\frac{\pi x}{a}\cos\frac{2\pi x}{a}dx
+=i\frac{8\hbar}{3a}.
+\end{align*}
+Also:
+\[
+\langle p\rangle=2c_1c_2\Re\{\langle\Psi_1|p|\Psi_2\rangle e^{-i(E_2-E_1)t/\hbar}\}
+=\frac{8\hbar}{5a}\sin\Bigl(\frac{E_2-E_1}{\hbar}t\Bigr).
+\]
+
+Für $p^2$ folgt direkt aus den Eigenwertgleichungen:
+\[
+\langle\Psi_n|p^2|\Psi_n\rangle=\frac{\hbar^2\pi^2n^2}{a^2},
+\quad
+\langle\Psi_1|p^2|\Psi_2\rangle=0,
+\]
+\[
+\langle p^2\rangle=c_1^2\frac{\hbar^2\pi^2}{a^2}+c_2^2\frac{4\hbar^2\pi^2}{a^2}.
+\]
+
+Damit sind die Unschärfen
+\[
+(\Delta x)^2=\langle x^2\rangle-\langle x\rangle^2,
+\quad
+(\Delta p)^2=\langle p^2\rangle-\langle p\rangle^2
+\]
+gegeben, und man verifiziert leicht:
+\[
+\Delta x\,\Delta p\ge\frac{\hbar}{2}.
+\]
+
+\end{document}

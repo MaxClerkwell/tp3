@@ -1,0 +1,93 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+% Definition der sech-Funktion
+\DeclareMathOperator{\sech}{sech}
+\begin{document}
+
+\section*{Lösung zu Aufgabe H4.3: Pöschl–Teller–Potential}
+
+Wir betrachten die stationäre Schrödinger­gleichung in einer Dimension
+\[
+-\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2\Psi(x)}{\mathrm{d}x^2}
++V(x)\,\Psi(x)=E\,\Psi(x),
+\]
+mit dem Pöschl–Teller–Potential
+\[
+V(x)=-\frac{\lambda(\lambda+1)\,\hbar^2}{2m}\,\sech^2(x),
+\quad \lambda\in\mathbb{N}_0.
+\]
+
+\subsection*{(a) Substitution und Herleitung der Differentialgleichung}
+
+\begin{enumerate}
+  \item Schrödinger­gleichung umgeformt:
+  \[
+    -\frac{\hbar^2}{2m}\Psi''(x)
+    -\frac{\lambda(\lambda+1)\,\hbar^2}{2m}\sech^2(x)\,\Psi(x)
+    =E\,\Psi(x),
+  \]
+  Multiplizieren mit $-2m/\hbar^2$:
+  \[
+    \Psi''(x)+\Bigl(\tfrac{2mE}{\hbar^2}+\lambda(\lambda+1)\sech^2(x)\Bigr)\,\Psi(x)=0.
+  \]
+  Für gebundene Zustände ($E<0$) setzt man
+  \[
+    \mu^2:=-\frac{2mE}{\hbar^2}, 
+    \quad E=-\frac{\hbar^2\mu^2}{2m},
+  \]
+  und erhält
+  \[
+    \Psi''(x)-\bigl(\mu^2-\lambda(\lambda+1)\sech^2(x)\bigr)\,\Psi(x)=0.
+  \]
+
+  \item Mit $\sech^2(x)=1-\tanh^2(x)$ wählen wir die Substitution
+  \[
+    u=\tanh(x), 
+    \quad \frac{\mathrm{d}u}{\mathrm{d}x}=\sech^2(x), 
+    \quad \frac{\mathrm{d}^2u}{\mathrm{d}x^2}=-2\tanh(x)\sech^2(x).
+  \]
+  Setze $\Phi(u)=\Psi(x)$. Nach Anwendung der Kettenregel folgt
+  \[
+    (1-u^2)\,\Phi''(u)-2u\,\Phi'(u)
+    +\Bigl[\lambda(\lambda+1)-\tfrac{\mu^2}{1-u^2}\Bigr]\,\Phi(u)=0.
+  \]
+  Daraus erkennt man, dass die Energie über
+  \[
+    E=-\frac{\hbar^2\mu^2}{2m}
+  \]
+  vom Parameter $\mu$ abhängt.
+\end{enumerate}
+
+\subsection*{(b) Lösung und Energiespektrum}
+
+\begin{enumerate}
+  \item Die allgemeine Lösung der assoziierten Differentialgleichung ist
+  \[
+    \Phi(u)=A\,P_\lambda^{\mu}(u)+B\,Q_\lambda^{\mu}(u),
+  \]
+  wobei \(P\) und \(Q\) die assoziierten Legendre­funktionen sind. Für gebundene, normalisierbare Zustände auf \((-1,1)\) muss \(B=0\) und \(\mu\) ganzzahlig sein:
+  \[
+    \mu=\lambda-n,\quad n=0,1,2,\dots,\lambda.
+  \]
+
+  \item Die normierten Wellenfunktionen lauten
+  \[
+    \Psi_n(x)
+    =N_n\,P_\lambda^{\,\lambda-n}\!\bigl(\tanh(x)\bigr),
+    \quad n=0,1,\dots,\lambda,
+  \]
+  mit Normierungskonstanten \(N_n\).
+
+  \item Das diskrete Energiespektrum ist
+  \[
+    E_n
+    =-\frac{\hbar^2}{2m}\,(\lambda-n)^2,
+    \quad n=0,1,\dots,\lambda.
+  \]
+  Es gibt also genau \(\lambda+1\) gebundene Zustände mit
+  \(\;E_0< E_1<\cdots< E_{\lambda}<0\).
+\end{enumerate}
+
+\end{document}

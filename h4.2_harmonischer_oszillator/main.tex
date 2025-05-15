@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+
+
+\begin{document}
+
+\section{Lösung zu H4.2: Harmonischer Oszillator}
+\subsection*{Erwartungswerte von $\hat x$ und $\hat p$}
+Wir schreiben die Orts- und Impulsoperatoren in Leiteroperatoren um:
+\[
+  \hat x = \sqrt{\frac{\hbar}{2m\omega}}\,(a + a^\dagger), 
+  \qquad
+  \hat p = i\sqrt{\frac{\hbar m\omega}{2}}\,(a^\dagger - a).
+\]
+Für den Zustand $|n\rangle$ gelten die Wirkungen
+\[
+  a\,|n\rangle = \sqrt{n}\,|n-1\rangle,
+  \quad
+  a^\dagger\,|n\rangle = \sqrt{n+1}\,|n+1\rangle.
+\]
+Daher sind die Diagonalelemente
+\[
+  \langle n|a|n\rangle = 0,
+  \quad
+  \langle n|a^\dagger|n\rangle = 0,
+\]
+weil $a$ bzw.\ $a^\dagger$ die Quantenzahl $n$ ändern. Somit folgt:
+\[
+  \langle \hat x \rangle_n 
+  = \sqrt{\frac{\hbar}{2m\omega}}\bigl(\langle n|a|n\rangle + \langle n|a^\dagger|n\rangle\bigr)
+  = 0,
+\]
+\[
+  \langle \hat p \rangle_n
+  = i\sqrt{\frac{\hbar m\omega}{2}}\bigl(\langle n|a^\dagger|n\rangle - \langle n|a|n\rangle\bigr)
+  = 0.
+\]
+
+\subsection*{Berechnung von $\langle \hat x^2 \rangle_n$}
+Wir betrachten das Quadrat des Ortsoperators:
+\[
+  \hat x^2 
+  = \frac{\hbar}{2m\omega}\,(a + a^\dagger)^2
+  = \frac{\hbar}{2m\omega}\bigl(a^2 + a\,a^\dagger + a^\dagger\,a + a^{\dagger2}\bigr).
+\]
+Damit ist
+\[
+  \langle \hat x^2 \rangle_n
+  = \frac{\hbar}{2m\omega}\Bigl(\langle n|a^2|n\rangle 
+    + \langle n|a\,a^\dagger|n\rangle 
+    + \langle n|a^\dagger\,a|n\rangle 
+    + \langle n|a^{\dagger2}|n\rangle\Bigr).
+\]
+Nun gilt:
+\[
+  \langle n|a^2|n\rangle = 0, 
+  \quad
+  \langle n|a^{\dagger2}|n\rangle = 0,
+\]
+da $a^2|n\rangle\propto|n-2\rangle$ und $a^{\dagger2}|n\rangle\propto|n+2\rangle$ orthogonal zu $|n\rangle$.  
+Mit der Vertauschungsrelation $[a,a^\dagger]=1$, also $a\,a^\dagger = a^\dagger\,a + 1$, folgt:
+\[
+  \langle n|a\,a^\dagger|n\rangle
+  = \langle n|(a^\dagger\,a + 1)|n\rangle
+  = \langle n|a^\dagger\,a|n\rangle + 1
+  = n + 1,
+\]
+\[
+  \langle n|a^\dagger\,a|n\rangle = n.
+\]
+Also
+\[
+  \langle \hat x^2 \rangle_n
+  = \frac{\hbar}{2m\omega}\bigl((n+1) + n\bigr)
+  = \frac{\hbar}{2m\omega}(2n+1).
+\]
+
+\subsection*{Berechnung von $\langle \hat p^2 \rangle_n$}
+Analog zum Ortsoperator:
+\[
+  \hat p^2
+  = -\frac{\hbar m\omega}{2}\,(a^\dagger - a)^2
+  = \frac{\hbar m\omega}{2}\bigl(a\,a^\dagger + a^\dagger\,a - a^2 - a^{\dagger2}\bigr).
+\]
+Die Terme mit $a^2$ und $a^{\dagger2}$ verschwinden erneut, somit:
+\[
+  \langle \hat p^2 \rangle_n
+  = \frac{\hbar m\omega}{2}\bigl((n+1) + n\bigr)
+  = \frac{\hbar m\omega}{2}(2n+1).
+\]
+
+\subsection*{Standardabweichungen $(\Delta x)_n$ und $(\Delta p)_n$}
+Die Varianzen sind:
+\[
+  (\Delta x)_n^2 
+  = \langle \hat x^2 \rangle_n - \langle \hat x \rangle_n^2
+  = \frac{\hbar}{2m\omega}(2n+1),
+\]
+\[
+  (\Delta p)_n^2
+  = \langle \hat p^2 \rangle_n - \langle \hat p \rangle_n^2
+  = \frac{\hbar m\omega}{2}(2n+1).
+\]
+Daraus:
+\[
+  (\Delta x)_n = \sqrt{\frac{\hbar}{2m\omega}(2n+1)},
+  \quad
+  (\Delta p)_n = \sqrt{\frac{\hbar m\omega}{2}(2n+1)}.
+\]
+
+\subsection*{Heisenbergsche Unschärferelation}
+\[
+  (\Delta x)_n\,(\Delta p)_n
+  = \sqrt{\frac{\hbar}{2m\omega}(2n+1)}
+    \,\sqrt{\frac{\hbar m\omega}{2}(2n+1)}
+  = (2n+1)\,\frac{\hbar}{2}
+  \;\ge\;\frac{\hbar}{2}.
+\]
+Für den Grundzustand $n=0$ gilt die Gleichheit:
+\[
+  (\Delta x)_0\,(\Delta p)_0 = \frac{\hbar}{2}.
+\]
+
+\end{document}
