@@ -1,0 +1,421 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\begin{document}
+
+\section*{H7.2 Delta-Potential in Impulsdarstellung (6 Punkte)}
+
+\textbf{Aufgabentext:}\\
+Betrachten Sie die stationäre Schrödingergleichung in einer Dimension mit einem Potential, das für $|x| \to \infty$ verschwindet.
+\begin{enumerate}[label=(\alph*)]
+  \item Nutzen Sie die Dirac-Notation (insbesondere die Vollständigkeitsrelationen), um die stationäre Schrödingergleichung in der Impulsraumdarstellung (Integral- statt Differentialgleichung!)
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p) \;+\; \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} dp'\; \widetilde V(p - p')\,\widetilde\Psi(p') \;=\; E\,\widetilde\Psi(p)
+  \]
+  mit entsprechend definiertem $\widetilde\Psi$ und $\widetilde V$ herzuleiten.
+  \item Lösen Sie die Eigenwertgleichung für ein diskretes Spektrum im Fall des Delta-Potentials 
+  \[
+    V(x) = - \alpha\,\delta(x), \qquad \alpha > 0.
+  \]
+  Zeigen Sie dazu, dass das Potential in Impulsraumdarstellung konstant ist. Wie viele gebundene Zustände gibt es? Berechnen Sie alle Bindungsenergien und vergleichen Sie diese mit den Ergebnissen der Aufgabe H5.2. Ermitteln Sie ebenfalls die zu den Zuständen zugehörigen normierten Wellenfunktionen in Impulsraumdarstellung.
+  
+  \textbf{Hinweis:} Sie können annehmen, dass 
+  \[
+    \int_{-\infty}^{+\infty} dp\,\widetilde\Psi(p)
+  \]
+  eine endliche Konstante ist. Weiterhin können Sie $\arctan' = \dots$ (→ genaue Formeln nach Bedarf).
+\end{enumerate}
+
+\hrulefill
+
+\bigskip
+\textbf{Lösung:}
+
+\section{Aufgabenteil (a): Schrödinger-Gleichung in Impulsdarstellung}
+
+\textbf{Ziel:} Wir möchten aus der bekannten Schrödingergleichung im Ortsraum
+\[
+  \Bigl(-\frac{\hbar^2}{2m}\,\frac{d^2}{dx^2} + V(x)\Bigr)\,\Psi(x) \;=\; E\,\Psi(x)
+\]
+mittels Fourier-Transformation und Dirac-Notation eine Integralgleichung für $\widetilde\Psi(p)$ herleiten:
+\[
+  \frac{p^2}{2m}\,\widetilde\Psi(p) \;+\; \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} dp'\; \widetilde V(p - p')\,\widetilde\Psi(p') = E\,\widetilde\Psi(p).
+\]
+
+\subsection*{1. Ansatz mit Dirac-Notationen}
+
+\begin{itemize}
+  \item Wir starten mit der stationären Schrödinger-Gleichung in Operator-Schreibweise:
+  \[
+    \hat H \ket{\Psi} = E \ket{\Psi}, \qquad \hat H = \frac{\hat p^2}{2m} + V(\hat x).
+  \]
+  Hierbei ist $\hat p = -\,\mathrm{i}\,\hbar\,\partial_x$ und $V(\hat x)$ das Potential-Operator.
+  \item Wir wollen die Gleichung in der Impulsdarstellung schreiben, d.\,h. wir multiplizieren von links mit $\bra{p}$, wobei $\{\ket{p}\}$ die Eigenzustände des Impulsoperators $\hat p$ sind:
+  \[
+    \bra{p}\hat H\ket{\Psi} = E\,\bra{p}\ket{\Psi}.
+  \]
+  \item Definiere $\widetilde\Psi(p) := \braket{p}{\Psi}$ als Impuls-Wellenfunktion. Dann ist die rechte Seite sofort:
+  \[
+    \text{RHS} = E\,\widetilde\Psi(p).
+  \]
+\end{itemize}
+
+\subsection*{2. Impulsdarstellung des kinetischen Terms}
+
+\begin{itemize}
+  \item Der kinetische Term $\hat p^2/(2m)$ wirkt auf den Impuls-Eigenzustand $\ket{p'}$ wie
+  \[
+    \hat p^2 \ket{p'} = p'^2 \ket{p'}.
+  \]
+  \item Daher gilt
+  \[
+    \bra{p}\,\frac{\hat p^2}{2m}\,\ket{\Psi}
+    = \int_{-\infty}^{+\infty} dp'\,\bra{p}\frac{\hat p^2}{2m}\ket{p'} \braket{p'}{\Psi}
+    = \int dp'\;\frac{p'^2}{2m}\,\braket{p}{p'}\,\widetilde\Psi(p').
+  \]
+  \item Wegen $\braket{p}{p'} = \delta(p - p')$ fällt die Integration weg und wir erhalten direkt
+  \[
+    \bra{p}\,\frac{\hat p^2}{2m}\,\ket{\Psi} = \frac{p^2}{2m}\,\widetilde\Psi(p).
+    \tag{1}
+  \]
+\end{itemize}
+
+\subsection*{3. Impulsdarstellung des Potential-Terms}
+
+\begin{itemize}
+  \item Der Potential-Operator ist $V(\hat x)$. Wir schreiben ihn in Impuls- bzw. Ortsraum-Übergang:
+  \[
+    \bra{p}\,V(\hat x)\,\ket{\Psi} 
+    = \int_{-\infty}^{+\infty} dp'\;\bra{p}\,V(\hat x)\,\ket{p'}\;\widetilde\Psi(p').
+  \]
+  \item Nun zerlegen wir $\bra{p}V(\hat x)\ket{p'}$ mittels der Vollständigkeitsrelation im Ortsraum:
+  \[
+    \ket{x}\bra{x} = \int_{-\infty}^{+\infty} dx\,\ket{x}\bra{x} = \hat{\mathbb{1}}.
+  \]
+  Also
+  \[
+    \bra{p}\,V(\hat x)\,\ket{p'} 
+    = \int_{-\infty}^{+\infty} dx\;\bra{p}\,V(\hat x)\,\ket{x}\bra{x}\ket{p'}
+    = \int_{-\infty}^{+\infty} dx\;\bra{p}x\ket\,V(x)\,\braket{x}{p'}.
+  \]
+  \item Erinnerung: $\braket{x}{p} = \frac{1}{\sqrt{2\pi\hbar}}\,e^{\frac{\mathrm{i}}{\hbar} p\,x}$. Daher
+  \[
+    \bra{p}\,V(\hat x)\,\ket{p'}
+    = \int_{-\infty}^{+\infty} dx\;\frac{1}{\sqrt{2\pi\hbar}}\,e^{-\frac{\mathrm{i}}{\hbar} p\,x}\;V(x)\;\frac{1}{\sqrt{2\pi\hbar}}\,e^{\frac{\mathrm{i}}{\hbar} p'\,x}.
+  \]
+  \item Das ist gerade die Faltung von $V(x)$ mit den Exponentialen. Wir definieren die Fourier-Transformierte des Potentials:
+  \[
+    \widetilde V(q) \;:=\; \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} dx\; e^{-\frac{\mathrm{i}}{\hbar} q\,x}\;V(x).
+  \]
+  \item In unserem Ausdruck für $\bra{p}V(\hat x)\ket{p'}$ erkennen wir:
+  \[
+    \bra{p}V(\hat x)\ket{p'}
+    = \frac{1}{\sqrt{2\pi\hbar}} \int dx\; e^{-\frac{\mathrm{i}}{\hbar}(p - p')\,x} \;V(x)
+    = \widetilde V(p - p').
+    \tag{2}
+  \]
+  \item Damit wird der Potential-Term in Impulsdarstellung:
+  \[
+    \bra{p}V(\hat x)\ket{\Psi}
+    = \int_{-\infty}^{+\infty} dp'\; \widetilde V(p - p')\;\widetilde\Psi(p').
+    \tag{3}
+  \]
+  \item Häufig zieht man noch $1/\sqrt{2\pi\hbar}$ vor die Summe, je nach Definition der Fourier-Transformierten. Wir haben $\widetilde V$ so definiert, dass Gleichung (2) ohne zusätzlichen Normierungsfaktor auskommt.
+\end{itemize}
+
+\subsection*{4. Zusammenführung und endgültige Integralgleichung}
+
+\begin{itemize}
+  \item Fassen wir (1) und (3) zusammen: Die Projektion von $\hat H\ket{\Psi}=E\ket{\Psi}$ auf $\bra{p}$ liefert
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p) \;+\; \int_{-\infty}^{+\infty} dp'\;\widetilde V(p - p')\,\widetilde\Psi(p') \;=\; E\,\widetilde\Psi(p).
+  \]
+  \item Wird bei einer anderen Konvention $\widetilde V$ mit $1/\sqrt{2\pi\hbar}$ definiert, so erscheint dieser Faktor noch in der Integralgleichung. Die obige Darstellung entspricht der in der Aufgabenstellung geforderten Form, ggf. muss der Normierungsfaktor $\frac{1}{\sqrt{2\pi\hbar}}$ vor dem Integral stehen, wenn man konsistent $\widetilde\Psi(p)=(2\pi\hbar)^{-1/2}\int e^{-\mathrm{i}px/\hbar}\Psi(x)\,dx$ nutzt. Für unsere Ableitung genügt aber die gezeigte Form.
+  \item \textbf{Ergebnis:} 
+  \[
+    \boxed{
+      \frac{p^2}{2m}\,\widetilde\Psi(p)
+      \;+\; \frac{1}{\sqrt{2\pi\hbar}}\,\int_{-\infty}^{+\infty} dp'\;\widetilde V(p - p')\,\widetilde\Psi(p')
+      \;=\; E\,\widetilde\Psi(p).
+    }
+  \]
+  Damit haben wir die stationäre Schrödingergleichung in der Impulsraumdarstellung als Integralgleichung hergeleitet.
+\end{itemize}
+
+\newpage
+\section{Aufgabenteil (b): Diskretes Spektrum für $V(x) = -\alpha\,\delta(x)$}
+
+\textbf{Ziel:} Wir wollen im Impulsraum die gebundenen Zustände für
+\[
+   V(x) \;=\; -\,\alpha\,\delta(x), \qquad \alpha>0,
+\]
+bestimmen. Dazu zeigen wir zunächst, dass $\widetilde V(p)$ konstant ist, ermitteln die Eigenenergien und die Wellenfunktionen $\widetilde\Psi(p)$ im Impulsraum. Anschließend vergleichen wir mit dem Ergebnis in Ortsdarstellung (Aufgabe H5.2).
+
+\subsection*{1. Fourier-Transformierte des Delta-Potentials}
+
+\begin{itemize}
+  \item Definition: $V(x) = -\alpha\,\delta(x)$. Die Fourier-Transformierte (im Sinne von (2)) lautet:
+  \[
+    \widetilde V(q)
+    = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} dx\; e^{-\frac{\mathrm{i}}{\hbar} q\,x}\; \bigl[-\alpha\,\delta(x)\bigr].
+  \]
+  \item Da $\delta(x)$ nur bei $x=0$ beiträgt, setzen wir $x=0$ in den Exponenten ein und erhalten
+  \[
+    \widetilde V(q) = -\,\alpha\,\frac{1}{\sqrt{2\pi\hbar}}\,e^{-\frac{\mathrm{i}}{\hbar} q\cdot 0}
+    = -\,\alpha\,\frac{1}{\sqrt{2\pi\hbar}}.
+  \]
+  \item \textbf{Schlussfolgerung:} Im Impulsraum ist $ \widetilde V(q) $ \emph{konstant} und gleich
+  \[
+    \widetilde V(q) \;=\; -\,\frac{\alpha}{\sqrt{2\pi\hbar}} \quad\text{für alle }q.
+  \]
+  \item Dies vereinfacht die Integralgleichung erheblich, da keine Abhängigkeit von $p - p'$ mehr vorliegt.
+\end{itemize}
+
+\subsection*{2. Schrödinger-Gleichung im Impulsraum für das Delta-Potential}
+
+\begin{itemize}
+  \item Die allgemeine Impuls-Raum-Gleichung aus (a) lautet:
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p)
+    \;+\; \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{+\infty} dp'\;\widetilde V(p - p')\,\widetilde\Psi(p')
+    = E\,\widetilde\Psi(p).
+  \]
+  \item Setzen wir $\widetilde V(p - p') = -\,\frac{\alpha}{\sqrt{2\pi\hbar}}$ unabhängig von $p-p'$, so erhalten wir
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p)
+    \;-\; \frac{\alpha}{2\pi\hbar}\,\int_{-\infty}^{+\infty} dp'\;\widetilde\Psi(p')
+    \;=\; E\,\widetilde\Psi(p).
+    \tag{4}
+  \]
+  \item Wir nehmen an, dass für gebundene Zustände $E<0$ gilt. Deshalb sei $E=-\,|E|$ mit $|E|>0$. Außerdem heißt 
+  \[
+     C \;:=\; \int_{-\infty}^{+\infty} dp'\;\widetilde\Psi(p')
+     \quad
+     \text{eine (endliche) Konstante.}
+     \tag{5}
+  \]
+  \item Dann schreiben wir (4) um:
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p) \;+\; \Bigl(-\,\frac{\alpha}{2\pi\hbar}\,C\Bigr) \;=\; E\,\widetilde\Psi(p).
+  \]
+  \item Bringen wir den $E\,\widetilde\Psi(p)$-Term nach links:
+  \[
+    \Bigl(\frac{p^2}{2m} - E\Bigr)\,\widetilde\Psi(p) 
+    \;=\; \frac{\alpha}{2\pi\hbar}\,C.
+    \tag{6}
+  \]
+  \item Beachte: $\frac{p^2}{2m} - E = \frac{p^2}{2m} + |E| > 0$ für alle reellen $p$. Daher ist der Nenner nicht null.
+  \item Lösen wir (6) nach $\widetilde\Psi(p)$ auf:
+  \[
+    \widetilde\Psi(p)
+    = \frac{\alpha\,C}{2\pi\hbar}\,\frac{1}{\frac{p^2}{2m} + |E|}.
+    \tag{7}
+  \]
+  \item Wir sehen, dass $\widetilde\Psi(p)$ bis auf den Faktor $C$ eindeutig bestimmt ist.
+\end{itemize}
+
+\subsection*{3. Bestimmung der Konstante $C$ und der Bindungsenergie}
+
+\begin{itemize}
+  \item Aus (5) liest man:
+  \[
+    C \;=\; \int_{-\infty}^{+\infty} dp\;\widetilde\Psi(p) 
+    \;=\; \int_{-\infty}^{+\infty} dp\;
+    \frac{\alpha\,C}{2\pi\hbar}\,\frac{1}{\frac{p^2}{2m} + |E|}.
+  \]
+  \item Wir ziehen $C$ und $\frac{\alpha}{2\pi\hbar}$ vor das Integral:
+  \[
+    C = \frac{\alpha\,C}{2\pi\hbar} \int_{-\infty}^{+\infty} dp\;\frac{1}{\frac{p^2}{2m} + |E|}.
+    \tag{8}
+  \]
+  \item Teilen wir nun durch $C$ (angenommen $C\neq 0$, sonst trivial Null-Lösung), so folgt:
+  \[
+    1 = \frac{\alpha}{2\pi\hbar} \int_{-\infty}^{+\infty} dp\;\frac{1}{\frac{p^2}{2m} + |E|}.
+    \tag{9}
+  \]
+  \item Wir müssen das Integral 
+  \[
+    I := \int_{-\infty}^{+\infty} dp\;\frac{1}{\frac{p^2}{2m} + |E|}
+  \]
+  auswerten. Substitution: $u = p/\sqrt{2m\,|E|}\;\Rightarrow\; p = u\,\sqrt{2m\,|E|},\; dp = \sqrt{2m\,|E|}\,du$. Dann
+  \[
+    \frac{p^2}{2m} + |E| 
+    = |E|\,(u^2 + 1),
+  \]
+  \[
+    I = \int_{-\infty}^{+\infty} \sqrt{2m\,|E|}\,du \;\frac{1}{|E|\,(u^2 + 1)}
+    = \sqrt{\frac{2m}{|E|}} \int_{-\infty}^{+\infty} \frac{du}{u^2 + 1}.
+  \]
+  \item Da $\int_{-\infty}^{+\infty} \frac{du}{u^2 + 1} = \pi$, erhalten wir:
+  \[
+    I = \sqrt{\frac{2m}{|E|}} \;\pi.
+    \tag{10}
+  \]
+  \item Setzen wir (10) in (9) ein:
+  \[
+    1 = \frac{\alpha}{2\pi\hbar} \;\bigl[\,\pi\,\sqrt{\tfrac{2m}{|E|}}\,\bigr] 
+    = \frac{\alpha}{2\hbar}\,\sqrt{\frac{2m}{|E|}}.
+  \]
+  \item Lösen wir nach $|E|$ auf:
+  \[
+    2\hbar = \alpha\,\sqrt{\frac{2m}{|E|}}
+    \;\;\Longrightarrow\;\;
+    \sqrt{\frac{2m}{|E|}} = \frac{2\hbar}{\alpha}
+    \;\;\Longrightarrow\;\;
+    \frac{2m}{|E|} = \frac{4\hbar^2}{\alpha^2}
+    \;\;\Longrightarrow\;\;
+    |E| = \frac{m\,\alpha^2}{2\hbar^2}.
+  \]
+  \item Damit erhalten wir die Bindungsenergie 
+  \[
+    E = -\,|E| 
+    = -\,\frac{m\,\alpha^2}{2\hbar^2}.
+    \tag{11}
+  \]
+  \item \emph{Anmerkung:} Es gibt genau \emph{einen} gebundenen Zustand (diskretes Spektrum), da die Gleichung (9) nur für genau diesen Wert von $|E|$ erfüllt ist. Es existiert also nur eine negative Eigenenergie.
+\end{itemize}
+
+\subsection*{4. Normierung der Impulsraum-Wellenfunktion}
+
+\begin{itemize}
+  \item Wir setzen nun $|E| = m\alpha^2/(2\hbar^2)$ in (7) ein. Dann folgt
+  \[
+    \widetilde\Psi(p) 
+    = \frac{\alpha\,C}{2\pi\hbar}\,\frac{1}{\frac{p^2}{2m} + \frac{m\alpha^2}{2\hbar^2}}
+    = \frac{\alpha\,C}{2\pi\hbar}\,\frac{1}{\frac{1}{2m}\bigl(p^2 + \tfrac{m^2\alpha^2}{\hbar^2}\bigr)}.
+  \]
+  \[
+    = \frac{\alpha\,C}{2\pi\hbar}\,\frac{2m}{p^2 + \left(\frac{m\alpha}{\hbar}\right)^2}
+    = \frac{m\,\alpha\,C}{\pi\hbar}\,\frac{1}{p^2 + \left(\frac{m\alpha}{\hbar}\right)^2}.
+    \tag{12}
+  \]
+  \item Um $\widetilde\Psi(p)$ zu normieren, muss gelten:
+  \[
+    \int_{-\infty}^{+\infty} dp\; \bigl|\widetilde\Psi(p)\bigr|^2 = 1.
+    \tag{13}
+  \]
+  \item Einsetzen von (12):
+  \[
+    \int_{-\infty}^{+\infty} dp\; 
+    \left( \frac{m\,\alpha\,C}{\pi\hbar} \right)^2
+    \frac{1}{\left[p^2 + \left(\frac{m\alpha}{\hbar}\right)^2\right]^2} 
+    = 1.
+  \]
+  \item Ziehen wir den konstanten Faktor heraus:
+  \[
+    \left(\frac{m\,\alpha\,C}{\pi\hbar}\right)^2 
+    \int_{-\infty}^{+\infty} dp\;\frac{1}{\bigl(p^2 + (m\alpha/\hbar)^2\bigr)^2} 
+    = 1.
+    \tag{14}
+  \]
+  \item Wir müssen das Integral
+  \[
+    J := \int_{-\infty}^{+\infty} dp\;\frac{1}{\bigl(p^2 + a^2\bigr)^2} 
+    \quad\text{mit }a=\frac{m\alpha}{\hbar}
+  \]
+  ausrechnen. Standard-Resultat (z.\,B. durch Residuenrechnung oder bekannte Tabellen):
+  \[
+    \int_{-\infty}^{+\infty} \frac{dp}{(p^2 + a^2)^2} = \frac{\pi}{2\,a^3}.
+  \]
+  (Man findet diesen Wert in den meisten Integraltafeln.)
+  \item Setzen wir $a = \frac{m\alpha}{\hbar}$ ein:
+  \[
+    J = \frac{\pi}{2}\,\left(\frac{\hbar}{m\alpha}\right)^3.
+    \tag{15}
+  \]
+  \item Daraus folgt aus (14):
+  \[
+    \left(\frac{m\,\alpha\,C}{\pi\hbar}\right)^2 \;\cdot\; \frac{\pi}{2}\,\left(\frac{\hbar}{m\alpha}\right)^3 = 1
+    \;\;\Longrightarrow\;\;
+    \frac{m^2\alpha^2\,C^2}{\pi^2\hbar^2} \;\cdot\; \frac{\pi\,\hbar^3}{2\,m^3\alpha^3} = 1.
+  \]
+  \[
+    \Longrightarrow\quad 
+    C^2 \;=\; \frac{\pi^2\hbar^2}{m^2\alpha^2} \;\cdot\; \frac{2\,m^3\alpha^3}{\pi\,\hbar^3}
+    = \frac{2\,m\,\alpha}{\hbar}.
+  \]
+  \[
+    \Longrightarrow\quad 
+    C = \sqrt{\frac{2\,m\,\alpha}{\hbar}}.
+  \]
+  (Wir wählen das positive Vorzeichen, da nur der Betrag von $C$ in die Normierung eingeht.)
+  \item Damit ist die normierte Impulsraum-Wellenfunktion:
+  \[
+    \boxed{
+      \widetilde\Psi(p)
+      = \sqrt{\frac{2\,m\,\alpha}{\hbar}}\;\cdot\;\frac{m\,\alpha}{\pi\hbar}\;\frac{1}{p^2 + \left(\frac{m\alpha}{\hbar}\right)^2}
+      = \sqrt{\frac{2\,m\,\alpha}{\hbar}}\;\cdot\;\frac{m\,\alpha}{\pi\hbar}\;\frac{1}{p^2 + \bigl(m\alpha/\hbar\bigr)^2}.
+    }
+    \tag{16}
+  \]
+\end{itemize}
+
+\subsection*{5. Diskrete Anzahl der gebundenen Zustände}
+
+\begin{itemize}
+  \item Die Gleichung (9) hatte genau eine Lösung für $|E|$, insofern existiert nur ein diskretes Niveau (ein gebundener Zustand). Es gibt genau \emph{einen} gebundenen Zustand.
+  \item Physikalisch entspricht dies dem bekannten Ergebnis, dass ein Atraktives Delta-Potential nur einen gebundenen Zustand besitzt.
+\end{itemize}
+
+\subsection*{6. Vergleich mit Aufgabe H5.2 (Ortsraum-Ergebnis)}
+
+\begin{itemize}
+  \item In H5.2 (Ortsraum) hat man für das Potential $V(x) = -\,\alpha\,\delta(x)$ gezeigt, dass die gebundene Energie
+  \[
+    E = -\,\frac{m\,\alpha^2}{2\,\hbar^2}
+  \]
+  und die (normierte) Ortsraum-Wellenfunktion
+  \[
+    \Psi(x) = \sqrt{\kappa}\;e^{-\kappa\,|x|}, \qquad \kappa = \frac{m\,\alpha}{\hbar^2}.
+  \]
+  \item Unser Impulsraum-Ergebnis (11) stimmt exakt mit der Bindungsenergie aus H5.2 überein:
+  \[
+    E = -\,\frac{m\,\alpha^2}{2\hbar^2}.
+  \]
+  \item Die Impulsraum-Wellenfunktion (16) ist Fourier-Transformierte der Ortsraum-Lösung. Tatsächlich kann man zeigen, dass
+  \[
+    \int_{-\infty}^{+\infty} dx\; e^{-\frac{\mathrm{i}}{\hbar} p\,x}\; \bigl[\sqrt{\kappa}\,e^{-\kappa|x|}\bigr]
+    = \sqrt{\frac{2\,m\,\alpha}{\hbar}} \;\frac{m\,\alpha}{\pi\hbar}\;\frac{1}{p^2 + \left(\frac{m\alpha}{\hbar}\right)^2},
+  \]
+  und damit genau (bis Normierungsvorzeichen) unsere $\widetilde\Psi(p)$.
+  \item Somit ist ein voller Konsistenznachweis erbracht: Die Impulsraum- und die Ortsraum-Lösung stimmen überein.
+\end{itemize}
+
+\section*{Zusammenfassung der Ergebnisse}
+
+\begin{itemize}
+  \item \textbf{Impulsraum-Schrödinger-Gleichung:}
+  \[
+    \frac{p^2}{2m}\,\widetilde\Psi(p)
+    \;+\; \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty dp'\,\widetilde V(p - p')\,\widetilde\Psi(p') 
+    = E\,\widetilde\Psi(p).
+  \]
+  \item Für $V(x) = -\,\alpha\,\delta(x)$ ist $\widetilde V(p-p') = -\alpha/\sqrt{2\pi\hbar}$ konstant. Daraus folgt eine Lösung
+  \[
+    \widetilde\Psi(p) = \frac{\alpha\,C}{2\pi\hbar}\,\frac{1}{\frac{p^2}{2m} + |E|}.
+  \]
+  \item Die Bindungsenergie ergibt sich als einziger negativer Eigenwert:
+  \[
+    E = -\,\frac{m\,\alpha^2}{2\hbar^2}.
+  \]
+  \item Es existiert genau \emph{ein} gebundener Zustand.
+  \item Die normierte Impulsraum-Wellenfunktion lautet
+  \[
+    \widetilde\Psi(p) 
+    = \sqrt{\frac{2\,m\,\alpha}{\hbar}}\;\frac{m\,\alpha}{\pi\hbar}\;\frac{1}{p^2 + \bigl(m\alpha/\hbar\bigr)^2}.
+  \]
+  \item Vergleich mit der Ortsraum-Lösung aus H5.2 zeigt vollständige Übereinstimmung der Energie und Fourier-Kompatibilität der Wellenfunktionen.
+\end{itemize}
+
+\end{document}

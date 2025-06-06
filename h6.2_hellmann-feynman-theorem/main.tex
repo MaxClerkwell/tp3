@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+
+\begin{document}
+
+\section*{Lösung zu H6.2: Hellmann-Feynman-Theorem}
+
+Sei $\hat{H}_\lambda$ ein Hamiltonoperator, der von einem reellen Parameter $\lambda$ abhängt. Die Eigenwertgleichung lautet
+\begin{equation}
+    \hat{H}_\lambda \ket{\Psi_\lambda} = E_\lambda \ket{\Psi_\lambda},
+\end{equation}
+wobei $\ket{\Psi_\lambda}$ ein normierter Eigenzustand ist, also $\braket{\Psi_\lambda}{\Psi_\lambda} = 1$.
+
+Zeigen Sie, dass für den Eigenwert $E_\lambda$ die folgende Identität gilt:
+\begin{equation}
+    \frac{\partial E_\lambda}{\partial \lambda} = \mel{\Psi_\lambda}{\frac{\partial \hat{H}_\lambda}{\partial \lambda}}{\Psi_\lambda}.
+\end{equation}
+
+\section*{Lösung}
+
+Wir beginnen mit der Ableitung des Eigenwerts $E_\lambda$ nach dem Parameter $\lambda$:
+\begin{equation}
+    E_\lambda = \bra{\Psi_\lambda} \hat{H}_\lambda \ket{\Psi_\lambda}.
+\end{equation}
+
+Dies ist gültig, weil $\hat{H}_\lambda \ket{\Psi_\lambda} = E_\lambda \ket{\Psi_\lambda}$ und $\braket{\Psi_\lambda}{\Psi_\lambda} = 1$.
+
+Nun leiten wir beide Seiten dieser Gleichung nach $\lambda$ ab:
+\begin{equation}
+    \frac{\partial E_\lambda}{\partial \lambda} = \frac{\partial}{\partial \lambda} \bra{\Psi_\lambda} \hat{H}_\lambda \ket{\Psi_\lambda}.
+\end{equation}
+
+Wir wenden die Produktregel (Kettenregel) auf die Ableitung eines Skalarprodukts mit Operator an:
+\begin{align}
+    \frac{\partial E_\lambda}{\partial \lambda}
+    &= \left( \frac{\partial}{\partial \lambda} \bra{\Psi_\lambda} \right) \hat{H}_\lambda \ket{\Psi_\lambda}
+    + \bra{\Psi_\lambda} \frac{\partial \hat{H}_\lambda}{\partial \lambda} \ket{\Psi_\lambda}
+    + \bra{\Psi_\lambda} \hat{H}_\lambda \left( \frac{\partial}{\partial \lambda} \ket{\Psi_\lambda} \right).
+\end{align}
+
+Bezeichne nun:
+\begin{equation}
+    \ket{\dot{\Psi}_\lambda} = \frac{\partial}{\partial \lambda} \ket{\Psi_\lambda}, \qquad
+    \bra{\dot{\Psi}_\lambda} = \frac{\partial}{\partial \lambda} \bra{\Psi_\lambda}.
+\end{equation}
+
+Dann können wir schreiben:
+\begin{align}
+    \frac{\partial E_\lambda}{\partial \lambda}
+    &= \bra{\dot{\Psi}_\lambda} \hat{H}_\lambda \ket{\Psi_\lambda}
+    + \bra{\Psi_\lambda} \frac{\partial \hat{H}_\lambda}{\partial \lambda} \ket{\Psi_\lambda}
+    + \bra{\Psi_\lambda} \hat{H}_\lambda \ket{\dot{\Psi}_\lambda}.
+\end{align}
+
+Da $\hat{H}_\lambda$ ein hermitescher Operator ist und $\hat{H}_\lambda \ket{\Psi_\lambda} = E_\lambda \ket{\Psi_\lambda}$, gilt:
+\begin{equation}
+    \bra{\dot{\Psi}_\lambda} \hat{H}_\lambda \ket{\Psi_\lambda} = E_\lambda \braket{\dot{\Psi}_\lambda}{\Psi_\lambda},
+\end{equation}
+\begin{equation}
+    \bra{\Psi_\lambda} \hat{H}_\lambda \ket{\dot{\Psi}_\lambda} = E_\lambda \braket{\Psi_\lambda}{\dot{\Psi}_\lambda}.
+\end{equation}
+
+Wegen $\braket{\Psi_\lambda}{\Psi_\lambda} = 1$ gilt:
+\begin{equation}
+    \frac{\partial}{\partial \lambda} \braket{\Psi_\lambda}{\Psi_\lambda} = 0,
+\end{equation}
+\begin{equation}
+    \braket{\dot{\Psi}_\lambda}{\Psi_\lambda} + \braket{\Psi_\lambda}{\dot{\Psi}_\lambda} = 0.
+\end{equation}
+
+Das bedeutet, dass
+\begin{equation}
+    \braket{\dot{\Psi}_\lambda}{\Psi_\lambda} = -\braket{\Psi_\lambda}{\dot{\Psi}_\lambda}.
+\end{equation}
+
+Somit ist
+\begin{equation}
+    \bra{\dot{\Psi}_\lambda} \hat{H}_\lambda \ket{\Psi_\lambda} + \bra{\Psi_\lambda} \hat{H}_\lambda \ket{\dot{\Psi}_\lambda}
+    = E_\lambda \left( \braket{\dot{\Psi}_\lambda}{\Psi_\lambda} + \braket{\Psi_\lambda}{\dot{\Psi}_\lambda} \right) = 0.
+\end{equation}
+
+Damit folgt schließlich:
+\begin{equation}
+    \frac{\partial E_\lambda}{\partial \lambda}
+    = \bra{\Psi_\lambda} \frac{\partial \hat{H}_\lambda}{\partial \lambda} \ket{\Psi_\lambda}.
+\end{equation}
+
+\section*{Schlussfolgerung}
+
+Dies ist die Aussage des \textbf{Hellmann-Feynman-Theorems}. Es erlaubt die Berechnung der Ableitung des Eigenwerts $E_\lambda$ allein aus der Ableitung des Operators $\hat{H}_\lambda$ — ohne explizite Kenntnis der Ableitung des Zustandsvektors $\ket{\Psi_\lambda}$. Dies ist besonders nützlich in quantenmechanischen Rechnungen, z.\,B.\ bei der Bestimmung von Kraft- oder Energieänderungen in Molekülsystemen.
+
+\end{document}

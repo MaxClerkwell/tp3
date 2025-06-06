@@ -1,0 +1,229 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\title{Lösung zu Aufgabe H5.1: Existenz gebundener Zustände}
+\author{Stephan Bökelmann, Meihui Huang}
+\date{\today}
+\maketitle
+
+\section*{Aufgabenstellung}
+Ein Teilchen der Masse $m$ bewege sich in einem eindimensionalen, kastenförmigen Potential
+\[
+V(x)=
+\begin{cases}
+\infty,& x\le0,\\
+-\,V_0,& 0<x<a,\\
+0,& x\ge a,
+\end{cases}
+\]
+wobei $V_0>0$ ist.
+
+\begin{enumerate}
+  \item[(a)] Stellen Sie die allgemeinen Lösungen der stationären Schrödingergleichung in den
+    jeweiligen Bereichen für \emph{positive} und \emph{negative} Energieeigenwerte auf.
+  \item[(b)] Formulieren Sie die Randbedingungen bei $x=0$, $x=a$ und $x\to\infty$ und wenden Sie
+    diese an. Leiten Sie damit die Bedingung für die Konstante $V_0$ her, unter der gebundene
+    Zustände (Energie $E<0$) existieren.
+\end{enumerate}
+
+\section{(a) Allgemeine Lösungen der Schrödingergleichung}
+
+Die zeitunabhängige Schrödingergleichung lautet
+\[
+-\frac{\hbar^2}{2m}\,\psi''(x) + V(x)\,\psi(x) = E\,\psi(x).
+\]
+Wir betrachten getrennt die drei Bereiche:
+
+\subsection*{Bereich I: \boldmath $x\le0$}
+\[
+V(x)=\infty \quad\Longrightarrow\quad \psi_I(x)=0
+\quad\text{(Zwangsbedingung durch unendliche Mauer).}
+\]
+
+\subsection*{Bereich II: \boldmath $0<x<a$, Potential $V=-V_0$}
+
+\begin{itemize}
+  \item \textbf{Für positive Energien $E>0$:}
+    \[
+      E - V(x) = E + V_0 > V_0,
+    \]
+    wir setzen
+    \[
+      k = \sqrt{\frac{2m\,(E+V_0)}{\hbar^2}} > 0.
+    \]
+    Die Gleichung lautet
+    \[
+    \psi_{II}''(x) + k^2\,\psi_{II}(x) = 0,
+    \]
+    mit allgemeiner Lösung
+    \[
+      \psi_{II}(x) = A\,\sin(kx) + B\,\cos(kx).
+      \quad % A, B: Integrationskonstanten
+    \]
+  \item \textbf{Für negative Energien $E<0$:} Für gebundene Zustände nehmen wir $-V_0<E<0$,
+    also $E+V_0>0$. Setze erneut
+    \[
+      k = \sqrt{\frac{2m\,(E+V_0)}{\hbar^2}}>0,
+    \]
+    und erhält dieselbe Form
+    \[
+      \psi_{II}(x) = A\,\sin(kx) + B\,\cos(kx).
+    \]
+\end{itemize}
+
+\subsection*{Bereich III: \boldmath $x\ge a$, Potential $V=0$}
+
+\begin{itemize}
+  \item \textbf{Für $E>0$:} Setze
+    \[
+      k' = \sqrt{\frac{2m\,E}{\hbar^2}}>0,
+    \]
+    die Gleichung
+    \[
+      \psi_{III}''(x) + k'^2 \,\psi_{III}(x) = 0
+    \]
+    löst sich allgemein zu
+    \[
+      \psi_{III}(x) = C\,e^{i k' x} + D\,e^{-i k' x}.
+      \quad % Wellen rein/ausgehend
+    \]
+  \item \textbf{Für gebundene Zustände $E<0$:} Schreibe $E=-|E|<0$ und setze
+    \[
+      \kappa = \sqrt{\frac{2m\,|E|}{\hbar^2}}>0.
+    \]
+    Dann
+    \[
+      \psi_{III}''(x) - \kappa^2\,\psi_{III}(x) = 0
+      \quad\Longrightarrow\quad
+      \psi_{III}(x) = C\,e^{\kappa x} + D\,e^{-\kappa x}.
+    \]
+\end{itemize}
+
+\section{(b) Randbedingungen und Existenzbedingung für gebundene Zustände}
+
+\subsection*{Randbedingung bei \boldmath $x=0$}
+
+\[
+\psi_I(0)=0 \quad\overset{\psi_I=0}{\Longrightarrow}\quad
+\psi_{II}(0)=0.
+\]
+Aus $\psi_{II}(0)=A\sin(0)+B\cos(0)=B=0$ folgt
+\[
+B=0,\quad
+\psi_{II}(x)=A\,\sin(kx).
+\]
+
+\subsection*{Randbedingungen bei \boldmath $x=a$ und für \boldmath $x\to\infty$}
+
+\begin{itemize}
+  \item \emph{Stetigkeit der Wellenfunktion:}
+    \[
+      \psi_{II}(a) = \psi_{III}(a).
+      \quad\text{(1)}
+    \]
+  \item \emph{Stetigkeit der Ableitung:}
+    \[
+      \psi_{II}'(a) = \psi_{III}'(a).
+      \quad\text{(2)}
+    \]
+  \item \emph{Normintegrabilität für gebundene Zustände:}
+    \[
+      \psi_{III}(x)\;\xrightarrow[x\to\infty]{}\;0
+      \quad\Longrightarrow\quad C=0
+      \quad\text{(den wachsenden Anteil verwerfen).}
+    \]
+    Damit bleibt
+    \[
+      \psi_{III}(x)=D\,e^{-\kappa x}.
+    \]
+\end{itemize}
+
+\subsection*{Herleitung der Transzendenzbedingung}
+
+Setze nun
+\[
+\psi_{II}(x)=A\sin(kx),\quad
+\psi_{III}(x)=D\,e^{-\kappa x}.
+\]
+\begin{align*}
+  \text{(1):}\quad & A\sin(k a) = D\,e^{-\kappa a}, \\
+  \text{(2):}\quad & A\,k\cos(k a) = -D\,\kappa\,e^{-\kappa a}.
+\end{align*}
+Dividiere (2) durch (1):
+\[
+\frac{k\cos(k a)}{\sin(k a)}
+= -\,\kappa
+\quad\Longrightarrow\quad
+k\,\cot(k a) = -\,\kappa.
+\]
+\[
+\boxed{\,k\,\cot(k a) = -\,\kappa.}
+\]
+Erinnere an die Definitionen:
+\[
+k = \sqrt{\frac{2m\,(E+V_0)}{\hbar^2}}, 
+\quad
+\kappa = \sqrt{\frac{2m\,|E|}{\hbar^2}}
+= \sqrt{\frac{2m\,(-E)}{\hbar^2}}.
+\]
+Mit $E=-|E|$ wird die Bedingung
+\[
+\sqrt{E+V_0}\,\cot\!\bigl(a\sqrt{2m\,(E+V_0)}/\hbar\bigr)
+= -\,\sqrt{-E},
+\]
+was man auch als
+\[
+\cot(\alpha)\;=\;-\,\frac{\sqrt{-E}}{\sqrt{E+V_0}}
+\quad\text{mit}\quad
+\alpha = \frac{a}{\hbar}\sqrt{2m\,(E+V_0)}
+\]
+schreiben kann.
+
+\subsection*{Existenzbedingung für mindestens einen gebundenen Zustand}
+
+Für das Intervall $0<k a<\pi$ (erste Nullstelle von $\sin$) muss $\cot(k a)$ positiv sein,
+damit die Gleichung gelöst werden kann. Also
+\[
+0 < k a < \frac{\pi}{2}
+\quad\Longrightarrow\quad
+k a < \frac{\pi}{2}.
+\]
+Setze $E\to 0^-$ (Grenzfall), dann $k^2 \to \tfrac{2mV_0}{\hbar^2}$:
+\[
+k = \sqrt{\frac{2mV_0}{\hbar^2}},
+\quad
+k a < \frac{\pi}{2}
+\;\Longrightarrow\;
+\sqrt{\frac{2mV_0}{\hbar^2}}\,a < \frac{\pi}{2}.
+\]
+Daraus folgt die minimale Tiefe $V_0$ für das Auftreten des ersten gebundenen Zustands:
+\[
+V_0 > \frac{\pi^2\hbar^2}{8 m a^2}.
+\]
+\[
+\boxed{\,V_0^{\rm (kritisch)} = \frac{\pi^2\hbar^2}{8 m a^2}.}
+\]
+Für $V_0$ kleiner als dieser kritischen Tiefe existiert kein gebundener Zustand; für $V_0$ größer
+als dieser kritischen Tiefe existiert mindestens ein gebundener Zustand.
+
+\section*{Zusammenfassung}
+
+\begin{itemize}
+  \item Im link unendlichen Rand ($x\le0$) ist $\psi=0$.
+  \item Im Potentialkasten ($0<x<a$) sind die Lösungen Sinus- und Kosinusfunktionen mit Impuls
+    $k=\sqrt{2m\,(E+V_0)}/\hbar$.
+  \item Rechts vom Kasten ($x\ge a$) fällt die Wellenfunktion exponentiell ab, $\exp(-\kappa x)$,
+    mit Zerfallslänge $\kappa=\sqrt{2m(-E)}/\hbar$.
+  \item Die Matching-Bedingungen an $x=a$ liefern die Transzendenzgleichung
+    $k\cot(k a)=-\kappa$.
+  \item Die Bedingung für das erste gebundene Niveau ergibt:
+    $V_0 > \pi^2\hbar^2/(8 m a^2)$.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,322 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\begin{document}
+
+\section*{Lösung zu H7.3: Integraldarstellung von Operatoren}
+
+% ------------------------------------------------------------
+% Dieser Abschnitt beschreibt die Aufgabenstellung und die Vorgehensweise.
+% ------------------------------------------------------------
+\subsection*{Aufgabenstellung}
+Gegeben sei ein Operator $\hat{A}$ im Ortsraum durch
+\[
+\hat{A}\,\lvert \boldsymbol{r} \rangle \;:=\; \frac{1}{r}\,e^{-m r}\,\lvert \boldsymbol{r} \rangle,\qquad m>0.
+\]
+Wir sollen den Kern $A(\boldsymbol{p},\boldsymbol{p}^{\prime})$ in der Impulsraumdarstellung berechnen, das heißt:
+\[
+A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+\;=\;
+\langle \boldsymbol{p}\rvert\,\hat{A}\,\lvert \boldsymbol{p}^{\prime}\rangle,
+\]
+und physikalisch deuten, was im Grenzfall $m \to 0$ passiert.
+
+% ------------------------------------------------------------
+% Hinweis auf Fourier-Transformation und Darstellung des Operators.
+% ------------------------------------------------------------
+\subsection*{1. Darstellung des Ortsraumkerns von $\hat{A}$}
+\begin{itemize}
+  \item Wir beginnen damit, den \emph{Kern im Ortsraum} $A(\boldsymbol{r},\boldsymbol{r}^{\prime})$ zu bestimmen. Per Definition gilt:
+  \[
+    (\hat{A}\,\Psi)(\boldsymbol{r})
+    \;=\; \langle \boldsymbol{r}\rvert \hat{A} \lvert \Psi \rangle
+    \;=\; \frac{1}{r}\,e^{-m r}\,\Psi(\boldsymbol{r}).
+  \]
+  \item Daraus folgt unmittelbar, dass
+  \[
+    A(\boldsymbol{r},\boldsymbol{r}^{\prime})
+    \;=\;
+    \frac{1}{r}\,e^{-m r}\;\delta^{(3)}(\boldsymbol{r} - \boldsymbol{r}^{\prime}),
+    \quad\text{mit }r = |\boldsymbol{r}|.
+  \]
+  \item \textbf{Zwischenkommentar:} 
+    Der Operator wirkt lokal im Ortsraum und multipliziert $\Psi(\boldsymbol{r})$ mit der Funktion $(1/r)e^{-m r}$, daher der Dirac-Delta-Faktor.
+\end{itemize}
+
+% ------------------------------------------------------------
+% Abschnitt zur Umrechnung in den Impulsraum über Fourier-Transformation.
+% ------------------------------------------------------------
+\subsection*{2. Übergang zum Impulsraum}
+\subsubsection*{2.1. Fourier-Darstellung der Impuls- und Ortszustände}
+\begin{itemize}
+  \item Man wendet die Fourier-Transformation an, um die Impulsraum-Matrixelemente zu berechnen:
+  \[
+    \langle \boldsymbol{p} \rvert \boldsymbol{r} \rangle
+    \;=\;
+    \frac{1}{(2\pi\hbar)^{3/2}}
+    \exp\!\Bigl(\tfrac{i}{\hbar}\,\boldsymbol{p}\cdot\boldsymbol{r}\Bigr),
+    \qquad
+    \langle \boldsymbol{r} \rvert \boldsymbol{p}^{\prime} \rangle
+    \;=\;
+    \frac{1}{(2\pi\hbar)^{3/2}}
+    \exp\!\Bigl(-\tfrac{i}{\hbar}\,\boldsymbol{p}^{\prime}\cdot\boldsymbol{r}\Bigr).
+  \]
+  \item \textbf{Zwischenkommentar:} 
+    In der üblichen Konvention sind $\langle \boldsymbol{r}|\boldsymbol{p}\rangle = (2\pi\hbar)^{-3/2} e^{+\,i\boldsymbol{p}\cdot\boldsymbol{r}/\hbar}$ und $\langle \boldsymbol{p}|\boldsymbol{r}\rangle = (2\pi\hbar)^{-3/2} e^{-\,i\boldsymbol{p}\cdot\boldsymbol{r}/\hbar}$.
+\end{itemize}
+
+\subsubsection*{2.2. Ausdruck für $A(\boldsymbol{p},\boldsymbol{p}^{\prime})$}
+\begin{align*}
+  A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+  \;=\; 
+  \langle \boldsymbol{p} \rvert \hat{A} \lvert \boldsymbol{p}^{\prime} \rangle
+  &=\;
+  \int d^{3}r \int d^{3}r^{\prime}\,
+  \langle \boldsymbol{p}\rvert\boldsymbol{r}\rangle\,
+  A(\boldsymbol{r},\boldsymbol{r}^{\prime})\,
+  \langle \boldsymbol{r}^{\prime}\rvert\boldsymbol{p}^{\prime}\rangle
+  \\[1ex]
+  &=\;
+  \int d^{3}r \int d^{3}r^{\prime}\,
+  \frac{e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{p}\cdot\boldsymbol{r}}}{(2\pi\hbar)^{3/2}}\,
+  \Bigl[\frac{1}{r}e^{-m r}\,\delta^{(3)}(\boldsymbol{r}-\boldsymbol{r}^{\prime})\Bigr]\,
+  \frac{e^{+\,\tfrac{i}{\hbar}\,\boldsymbol{p}^{\prime}\cdot\boldsymbol{r}^{\prime}}}{(2\pi\hbar)^{3/2}}
+  \\[1ex]
+  &=\;
+  \frac{1}{(2\pi\hbar)^{3}}
+  \int d^{3}r \; \frac{e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{p}\cdot\boldsymbol{r}}}{\;}\;
+  \frac{e^{+\,\tfrac{i}{\hbar}\,\boldsymbol{p}^{\prime}\cdot\boldsymbol{r}}}{\;}\;
+  \frac{e^{-m r}}{r}.
+\end{align*}
+\begin{itemize}
+  \item \textbf{Zwischenkommentar:} 
+    Aus der Delta-Funktion ergibt sich $\boldsymbol{r}^{\prime} = \boldsymbol{r}$. Die beiden Exponentialfaktoren verschmelzen zu $e^{-\,\tfrac{i}{\hbar}(\boldsymbol{p}-\boldsymbol{p}^{\prime})\cdot\boldsymbol{r}}$. Wir definieren den Impulsdifferenzvektor
+    \[
+      \boldsymbol{q} \;:=\; \boldsymbol{p} - \boldsymbol{p}^{\prime}.
+    \]
+  \item Damit vereinfacht sich
+  \[
+    A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+    \;=\;
+    \frac{1}{(2\pi\hbar)^{3}}\,
+    \int d^{3}r\,\frac{e^{-m r}}{r}
+    \exp\!\Bigl[-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}\Bigr].
+  \]
+\end{itemize}
+
+% ------------------------------------------------------------
+% Abschnitt zur Auswertung des Integrals in Kugelkoordinaten.
+% ------------------------------------------------------------
+\subsection*{3. Auswertung des räumlichen Integrals}
+\subsubsection*{3.1. Umwandlung in Kugelkoordinaten}
+\begin{itemize}
+  \item Wir wählen Kugelkoordinaten: 
+    \[
+      d^{3}r = r^{2}\,\sin\theta\,dr\,d\theta\,d\varphi,\quad
+      r = |\boldsymbol{r}|,\quad
+      \boldsymbol{q}\cdot\boldsymbol{r} = q\,r\,\cos\theta,
+      \quad q = |\boldsymbol{q}\,|.
+    \]
+  \item Das Integral zerfällt in einen Radial- und einen Winkelanteil:
+  \[
+    \int d^{3}r\,\frac{e^{-m r}}{r}e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}}
+    \;=\;
+    \int_{0}^{\infty} dr\;\int_{0}^{\pi} d\theta\;\int_{0}^{2\pi} d\varphi\;
+    \,\Bigl[r^{2}\sin\theta\,\frac{e^{-m r}}{r}\Bigr]\,
+    \exp\!\Bigl[-\,\tfrac{i}{\hbar}q\,r\,\cos\theta\Bigr].
+  \]
+  \item Vereinfachung: $r^{2}\,(1/r) = r$. Somit
+  \[
+    \int d^{3}r\,\frac{e^{-m r}}{r}e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}}
+    =
+    \int_{0}^{\infty} dr\,r\,e^{-m r}
+    \Biggl[\int_{0}^{\pi} d\theta\,\sin\theta\,
+    e^{-\,\tfrac{i}{\hbar}q\,r\,\cos\theta}\,\Biggr]
+    \Bigl[\int_{0}^{2\pi} d\varphi\Bigr].
+  \]
+  \item Der $\varphi$-Anteil liefert 
+  \[
+    \int_{0}^{2\pi} d\varphi = 2\pi.
+  \]
+\end{itemize}
+
+\subsubsection*{3.2. Berechnung des Winkelintegrals über $\theta$}
+\begin{itemize}
+  \item Wir betrachten das $\theta$-Integral:
+  \[
+    I_{\theta}
+    = 
+    \int_{0}^{\pi}\!\sin\theta\,
+    \exp\!\bigl[-\,\tfrac{i}{\hbar}q\,r\,\cos\theta\bigr]\;d\theta.
+  \]
+  \item Substitution: $u = \cos\theta \;\Rightarrow\; du = -\sin\theta\,d\theta$. Wenn $\theta$ von $0$ bis $\pi$ läuft, dann läuft $u$ von $1$ bis $-1$. Also
+  \[
+    I_{\theta}
+    = 
+    \int_{u=1}^{u=-1}
+    \exp\!\bigl[-\,\tfrac{i}{\hbar}q\,r\,u\bigr]\,(-du)
+    = 
+    \int_{-1}^{1} \exp\!\bigl[-\,\tfrac{i}{\hbar}q\,r\,u\bigr]\,du.
+  \]
+  \item Auswertung dieses Integrals:
+  \[
+    I_{\theta}
+    = 
+    \Bigl[\;-\frac{\hbar}{i\,q\,r}\,
+    \exp\!\bigl(-\,\tfrac{i}{\hbar}q\,r\,u\bigr)\Bigr]_{u=-1}^{\,u=1}
+    \;=\;
+    \frac{\hbar}{i\,q\,r}\,
+    \Bigl[e^{-\,\tfrac{i}{\hbar}q\,r} \;-\; e^{+\,\tfrac{i}{\hbar}q\,r}\Bigr].
+  \]
+  \item Mit der Identität $e^{-ix}-e^{+ix} = -\,2\,i\,\sin(x)$ folgt
+  \[
+    I_{\theta}
+    = 
+    \frac{\hbar}{i\,q\,r}\,\bigl(-\,2\,i\bigr)\,
+    \sin\!\bigl(\tfrac{q\,r}{\hbar}\bigr)
+    = 
+    \frac{2\,\hbar}{q\,r}\,
+    \sin\!\bigl(\tfrac{q\,r}{\hbar}\bigr).
+  \]
+  \item Damit ist das volle Winkelintegral
+  \[
+    \int_{0}^{\pi}d\theta\,\sin\theta\,
+    e^{-\,\tfrac{i}{\hbar}q\,r\,\cos\theta}
+    \;=\;
+    \frac{2\,\hbar}{q\,r}\,
+    \sin\!\bigl(\tfrac{q\,r}{\hbar}\bigr).
+  \]
+\end{itemize}
+
+\subsubsection*{3.3. Zusammensetzen der Teile}
+\begin{itemize}
+  \item Zusammenfassung: 
+  \[
+    \int d^{3}r\,\frac{e^{-m r}}{r}\,e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}}
+    = 
+    2\pi \int_{0}^{\infty} dr \; r \,e^{-m r}\;
+    \Bigl[\,\underbrace{\frac{2\,\hbar}{q\,r}\,\sin\bigl(\tfrac{q\,r}{\hbar}\bigr)}_{\substack{\text{Winkelintegral}\\I_{\theta}}}\Bigr].
+  \]
+  \item Vereinfachen:
+  \[
+    = 
+    2\pi \,\frac{2\,\hbar}{q}\,
+    \int_{0}^{\infty} dr \; e^{-m r}\,\sin\!\bigl(\tfrac{q\,r}{\hbar}\bigr).
+    \quad % r kürzt sich weg
+  \]
+  \item Definiere $k = \frac{q}{\hbar}$. Dann ist
+  \[
+    \int_{0}^{\infty} dr \; e^{-m r}\,\sin(k r)
+    \;=\;
+    \frac{k}{\,m^{2} + k^{2}\,},
+    \quad\text{bekannte Standardformel.}
+  \]
+  \item Setzen wir $k = \tfrac{q}{\hbar}$ ein:
+  \[
+    \int_{0}^{\infty} dr \; e^{-m r}\,\sin\!\Bigl(\tfrac{q\,r}{\hbar}\Bigr)
+    \;=\;
+    \frac{\tfrac{q}{\hbar}}{\,m^{2} + \bigl(\tfrac{q}{\hbar}\bigr)^{2}\!}
+    \;=\;
+    \frac{q/\hbar}{\,m^{2} + q^{2}/\hbar^{2}\!}
+    \;=\;
+    \frac{q}{\,\hbar\,\bigl(m^{2} + q^{2}/\hbar^{2}\bigr)\!}.
+  \]
+  \item Damit ergibt sich
+  \[
+    \int d^{3}r\,\frac{e^{-m r}}{r}\,e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}}
+    = 
+    2\pi \,\frac{2\,\hbar}{q}
+    \;\Bigl[\frac{q}{\,\hbar\,(m^{2} + q^{2}/\hbar^{2})\,}\Bigr]
+    = 
+    4\pi\,\frac{1}{\,m^{2} + \tfrac{q^{2}}{\hbar^{2}}\,}.
+  \]
+\end{itemize}
+
+% ------------------------------------------------------------
+% Endgültiges Ergebnis für den Impulskern A(p,p').
+% ------------------------------------------------------------
+\subsection*{4. Endergebnis für $A(\boldsymbol{p},\boldsymbol{p}^{\prime})$}
+\begin{itemize}
+  \item Wir hatten:
+  \[
+    A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+    \;=\;
+    \frac{1}{(2\pi\hbar)^{3}}\,
+    \int d^{3}r\,\frac{e^{-m r}}{r}
+    \exp\!\Bigl[-\,\tfrac{i}{\hbar}(\boldsymbol{p}-\boldsymbol{p}^{\prime})\cdot\boldsymbol{r}\Bigr].
+  \]
+  \item Das räumliche Integral haben wir ausgewertet und gefunden:
+  \[
+    \int d^{3}r\,\frac{e^{-m r}}{r}
+    e^{-\,\tfrac{i}{\hbar}\,\boldsymbol{q}\cdot\boldsymbol{r}}
+    \;=\;
+    4\pi\,
+    \frac{1}{\,m^{2} + \tfrac{q^{2}}{\hbar^{2}}\!},
+    \quad q = \lvert \boldsymbol{p} - \boldsymbol{p}^{\prime}\rvert.
+  \]
+  \item Damit:
+  \[
+    A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+    \;=\;
+    \frac{1}{(2\pi\hbar)^{3}}\;
+    4\pi\;\frac{1}{\,m^{2} + \tfrac{(\lvert \boldsymbol{p}-\boldsymbol{p}^{\prime}\rvert)^{2}}{\hbar^{2}}\!}
+    \;=\;
+    \frac{4\pi}{(2\pi\hbar)^{3}}\;
+    \frac{1}{\,m^{2} + \tfrac{(\boldsymbol{p}-\boldsymbol{p}^{\prime})^{2}}{\hbar^{2}}\!}.
+  \]
+  \item Wir können den Nenner wie folgt umschreiben:
+  \[
+    m^{2} + \frac{(\boldsymbol{p}-\boldsymbol{p}^{\prime})^{2}}{\hbar^{2}}
+    \;=\;
+    \frac{(\boldsymbol{p}-\boldsymbol{p}^{\prime})^{2} + m^{2}\,\hbar^{2}}{\hbar^{2}}.
+  \]
+  \item Deshalb folgt:
+  \[
+    A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+    \;=\;
+    \frac{4\pi}{(2\pi\hbar)^{3}}\;
+    \frac{\hbar^{2}}{\,(\boldsymbol{p}-\boldsymbol{p}^{\prime})^{2} + m^{2}\,\hbar^{2}\,}
+    \;=\;
+    \frac{4\pi\,\hbar^{2}}{\,8\pi^{3}\,\hbar^{3}\,\bigl[(\boldsymbol{p}-\boldsymbol{p}^{\prime})^{2} + m^{2}\,\hbar^{2}\bigr]\,}.
+  \]
+  \item Kürzen: $4\pi/8\pi^{3} = 1/(2\pi^{2})$, und $\hbar^{2}/\hbar^{3} = 1/\hbar$. Daher
+  \[
+    \boxed{
+      A(\boldsymbol{p},\boldsymbol{p}^{\prime})
+      \;=\;
+      \frac{1}{\,2\pi^{2}\,\hbar\,}\;
+      \frac{1}{\,(\boldsymbol{p} - \boldsymbol{p}^{\prime})^{2} + (m\,\hbar)^{2}\,}.
+    }
+  \]
+  \item \textbf{Zwischenkommentar:} 
+    Dieses Ergebnis entspricht dem gut bekannten Impulsraumkern des Yukawa-Potentials $(e^{-m r}/r)$.
+\end{itemize}
+
+% ------------------------------------------------------------
+% Physikalische Bedeutung des Grenzfalls m -> 0.
+% ------------------------------------------------------------
+\subsection*{5. Physikalische Bedeutung des Grenzfalls $m \to 0$}
+\begin{itemize}
+  \item Wenn wir $m \to 0$ setzen, vereinfacht sich der Kern zu
+  \[
+    A(\boldsymbol{p},\boldsymbol{p}^{\prime}) \;\xrightarrow{m\to 0}\;
+    \frac{1}{\,2\pi^{2}\,\hbar\,}\;
+    \frac{1}{\,(\boldsymbol{p} - \boldsymbol{p}^{\prime})^{2}\,}.
+  \]
+  \item \textbf{Zwischenkommentar:} 
+    Das entspricht dem Impulsraumkern des Coulomb-Potentials $\frac{1}{r}$. Denn im Grenzfall $m=0$ hat $e^{-m r}/r \to 1/r$.
+  \item \emph{Physikalische Interpretation:} 
+  \begin{itemize}
+    \item Der Parameter $m$ steht in der Yukawa-Wechselwirkung für die inverse Reichweite $\lambda = 1/m$. 
+    \item Für $m>0$ ist das Potential $V(r) = (1/r)\,e^{-m r}$ kurzreichweitig, typisch für Austauschmassive Teilchen (z.\,B. im Kernbereich: Pionenaustausch).
+    \item Im Grenzfall $m \to 0$ wird die Reichweite unendlich groß, sodass das Potential zu $V(r) = 1/r$ wird: das klassische Coulomb-Potential. 
+    \item Folglich beschreibt $\hat{A}$ bei $m=0$ den Operator, der im Ortsraum mit $1/r$ multipliziert. Sein Impulsraumkern ist dann das bekannte $1/(\boldsymbol{q}^{2})$ (bis Konstanten).
+  \end{itemize}
+  \item \textbf{Zwischenkommentar:} 
+    In der Quantenfeldtheorie würde man $m=0$ dem Fall masseloser Austauschteilchen (z.\,B. Photonen) zuordnen, die eine Coulomb-Wechselwirkung vermitteln.
+\end{itemize}
+
+\end{document}

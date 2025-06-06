@@ -1,0 +1,101 @@
+
+\documentclass[12pt]{scrartcl}
+% Paket für erweiterte mathematische Umgebungen
+\usepackage{amsmath,amssymb}
+\usepackage{physics} % Für bequeme Notation von Kommutatoren etc.
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+\begin{document}
+
+\section*{Lösung zu H6.3: Summenregel}
+
+\textbf{Aufgabenstellung.}
+Seien $\{\ket{\Psi_0},\ket{\Psi_1},\dots,\ket{\Psi_k}\}$ normierte Eigenzustände eines Hamiltonoperators
+$\hat H$ eines Teilchens der Masse $m$ im eindimensionalen Raum, mit nicht entarteten Energieeigenwerten
+$\{E_0,E_1,\dots,E_k\}$. Das Potential $V=V(\hat x)$ hängt nur vom Ortsoperator ab. Zeigen Sie, dass
+\[
+  \sum_{n=0}^k (E_n - E_m)\,\bigl|\langle \Psi_n | \hat x | \Psi_m \rangle\bigr|^2 = \mathrm{const.}
+\]
+unabhängig von der konkreten Wahl des Potentials, und bestimmen Sie die Konstante.\\
+
+\textbf{Hinweis.} Betrachten Sie dazu den doppelten Kommutator
+\(
+  [[\hat H,\hat x],\hat x]
+\).
+
+\bigskip
+
+\textbf{1. Schritt: Berechnung des ersten Kommutators}\\
+Wir zerlegen den Hamiltonoperator in kinetischen und Potentialanteil:
+\[
+  \hat H = \frac{\hat p^2}{2m} + V(\hat x).
+\]
+Da $V(\hat x)$ nur vom Ort abhängt, kommutiert es mit $\hat x$:
+\[
+  [V(\hat x),\hat x] = 0.
+\]
+Damit reduziert sich
+\[
+  [\hat H,\hat x] = \Bigl[\frac{\hat p^2}{2m},\hat x\Bigr].
+\]
+Nutzen wir die bekannten Beziehungen
+\[
+  [\hat p,\hat x] = -i\hbar,
+  \qquad
+  [\hat p^2,\hat x] = \hat p\,[\hat p,\hat x] + [\hat p,\hat x]\,\hat p = -2i\hbar\,\hat p.
+\]
+Daraus folgt
+\[
+  [\hat H,\hat x] = \frac{1}{2m}(-2i\hbar\,\hat p) = -\frac{i\hbar}{m}\,\hat p.
+\]
+
+\textbf{2. Schritt: Doppelter Kommutator}\\
+Nun berechnen wir den Kommutator von $[\hat H,\hat x]$ mit $\hat x$:
+\[
+  [[\hat H,\hat x],\hat x]
+  = \Bigl[-\frac{i\hbar}{m}\,\hat p,\,\hat x\Bigr]
+  = -\frac{i\hbar}{m}\,[\hat p,\hat x]
+  = -\frac{i\hbar}{m}(-i\hbar)
+  = -\frac{\hbar^2}{m}
+  =: C.
+\]
+Wichtig: $C$ ist eine vom Potential unabhängige Konstante.
+
+\textbf{3. Schritt: Zusammenhang zur Summenregel}\\
+Wir betrachten nun die Erwartung des doppelten Kommutators im Zustand $\ket{\Psi_m}$:
+\[
+  \bigl\langle \Psi_m \bigm| [[\hat H,\hat x],\hat x] \bigm| \Psi_m \bigr\rangle
+  = C
+  = -\frac{\hbar^2}{m}.
+\]
+Auf der anderen Seite lässt sich durch Einfügen der Vollständigkeitsrelation
+$\sum_n \ket{\Psi_n}\bra{\Psi_n}=\mathbb{1}$ und Ausnutzung
+$\hat H\ket{\Psi_n}=E_n\ket{\Psi_n}$ zeigen (siehe Beispielrechnung am Ende), dass
+\[
+  \bigl\langle [[\hat H,\hat x],\hat x]\bigr\rangle
+  = 2\sum_{n=0}^k (E_m - E_n)\,\bigl|x_{nm}\bigr|^2,
+  \quad x_{nm}=\langle\Psi_n|\hat x|\Psi_m\rangle.
+\]
+Damit folgt
+\[
+  \sum_{n=0}^k (E_n - E_m)\,\bigl|x_{nm}\bigr|^2 = \frac{\hbar^2}{2m}
+  \quad\text{(Konstante).}
+\]
+
+\textbf{4. Ausführliche Beispielrechnung}\\
+Wir skizzieren kurz den Nachweis des letzten Schritts:
+\begin{align*}
+  [[\hat H,\hat x],\hat x]
+  &= \hat H\hat x^2 - 2\hat x\hat H\hat x + \hat x^2\hat H, \\
+  \bigl\langle \Psi_m \bigm|[[\hat H,\hat x],\hat x]\bigm| \Psi_m \bigr\rangle
+  &= E_m\langle \Psi_m|\hat x^2|\Psi_m\rangle + E_m\langle \Psi_m|\hat x^2|\Psi_m\rangle
+     -2\langle \Psi_m|\hat x\hat H\hat x|\Psi_m\rangle \\
+  &= 2E_m\sum_n |x_{nm}|^2 -2\sum_n E_n|x_{nm}|^2
+   = 2\sum_n (E_m-E_n)|x_{nm}|^2.
+\end{align*}
+Umstellen nach $\sum_n(E_n-E_m)|x_{nm}|^2$ liefert die obige Konstante.
+
+\textbf{Hinweis zur Interpretation.} Diese Regel ist unabhängig von der Form des Potentials und ergibt eine nützliche
+Identität, z.B. für Abschätzungen oder Vergleichsgrößen in Störungsrechnungen.
+
+\end{document}

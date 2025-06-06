@@ -1,0 +1,188 @@
+\documentclass[11pt]{scrartcl}
+
+% Sprache und Zeichencodierung
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% Mathepakete
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{enumitem} % für optionale Listeinstellungen
+
+% Seitenränder etwas verkleinern
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+% Für fette mathematische Symbole
+\usepackage{bm}
+
+\begin{document}
+
+\section*{Lösung zu H6.1: Orthonormale Basen}
+
+\textbf{Gegeben:}
+\[
+|\xi_1\rangle \;=\;\frac12\,|1\rangle \;-\;\frac{i}{\sqrt2}\,|2\rangle,
+\qquad
+|\xi_2\rangle \;=\;\frac{i}{\sqrt3}\,|1\rangle \;-\;\frac{1}{\sqrt6}\,|2\rangle
+\;-\;i\frac{\sqrt3}{2}\,|3\rangle.
+\]
+
+\bigskip
+
+\section*{(a) Orthogonalisierung und Normierung}
+
+\begin{enumerate}[label=\arabic*)]
+  \item \textbf{Normen berechnen}
+
+    \[
+      \|\xi_1\|^2
+      = \Bigl|\tfrac12\Bigr|^2 + \Bigl|\tfrac{i}{\sqrt2}\Bigr|^2
+      = \tfrac14 + \tfrac12 = \tfrac34,
+    \]
+    \[
+      \|\xi_2\|^2
+      = \Bigl|\tfrac{i}{\sqrt3}\Bigr|^2
+      + \Bigl|\tfrac{1}{\sqrt6}\Bigr|^2
+      + \Bigl|\tfrac{\sqrt3}{2}\Bigr|^2
+      = \tfrac13 + \tfrac16 + \tfrac34 = 2.
+    \]
+
+    Damit ergeben sich die normierten Vektoren
+    \[
+      |\psi_1\rangle = \frac{|\xi_1\rangle}{\sqrt{3/4}}
+      = \frac{|\xi_1\rangle}{\tfrac{\sqrt3}{2}}
+      = \frac{1}{\sqrt3}\,|1\rangle \;-\; i\,\sqrt{\tfrac23}\,|2\rangle,
+    \]
+    \[
+      |\psi_2\rangle = \frac{|\xi_2\rangle}{\sqrt{2}}
+      = \frac{i}{\sqrt6}\,|1\rangle 
+        - \frac{1}{2\sqrt3}\,|2\rangle
+        - i\,\frac{\sqrt3}{2}\,|3\rangle.
+    \]
+
+  \item \textbf{Drittes orthogonales $\boldsymbol{|\xi_3\rangle}$ bestimmen}
+
+    Wir suchen einen Vektor
+    \(
+      |\xi_3\rangle = a\,|1\rangle + b\,|2\rangle + c\,|3\rangle
+    \)
+    mit den Orthogonalitätsbedingungen
+    \[
+      \langle \psi_1|\xi_3\rangle = 0,
+      \qquad
+      \langle \psi_2|\xi_3\rangle = 0.
+    \]
+    \begin{align*}
+      \langle \psi_1|\xi_3\rangle &= 
+        \Bigl(\tfrac{1}{\sqrt3}\langle1| + i\sqrt{\tfrac23}\langle2|\Bigr)
+        (\,a|1\rangle + b|2\rangle + c|3\rangle)
+      = \frac{a}{\sqrt3} + i\,\sqrt{\tfrac23}\,b = 0,\\
+      \langle \psi_2|\xi_3\rangle &= 
+        \Bigl(-\frac{i}{\sqrt6}\langle1| - \frac{1}{2\sqrt3}\langle2|
+              + i\frac{\sqrt3}{2}\langle3|\Bigr)
+        (\,a|1\rangle + b|2\rangle + c|3\rangle)\\
+      &= -\frac{i\,a}{\sqrt6} - \frac{b}{2\sqrt3} + i\frac{\sqrt3}{2}\,c = 0.
+    \end{align*}
+
+    Aus der ersten Gleichung folgt
+    \[
+      \frac{a}{\sqrt3} + i\sqrt{\tfrac23}\,b = 0
+      \;\Longrightarrow\;
+      b = -\,i\,\frac{a/\sqrt3}{\sqrt{2/3}}
+          = -\,i\,\frac{a}{\sqrt2}
+      \;\Longrightarrow\;
+      b = i\,\frac{a}{\sqrt2}\quad(\text{Vorzeichenwahl für Konsistenz}).
+    \]
+    Setze $b= i\,a/\sqrt2$ in die zweite Gleichung ein:
+    \[
+      -\frac{i\,a}{\sqrt6}
+      - \frac{1}{2\sqrt3}\Bigl(i\,\frac{a}{\sqrt2}\Bigr)
+      + i\frac{\sqrt3}{2}\,c = 0
+      \;\Longrightarrow\;
+      -\frac{i\,a}{\sqrt6}
+      - i\,\frac{a}{2\sqrt6}
+      + i\frac{\sqrt3}{2}\,c = 0.
+    \]
+    Zusammenfassen der $a$-Terme:
+    \[
+      i\,a\Bigl(-\tfrac{1}{\sqrt6} - \tfrac{1}{2\sqrt6}\Bigr)
+      + i\frac{\sqrt3}{2}\,c = 0
+      \;\Longrightarrow\;
+      i\,a\Bigl(-\tfrac{3}{2\sqrt6}\Bigr)
+      + i\frac{\sqrt3}{2}\,c = 0
+      \;\Longrightarrow\;
+      c = \frac{a\,(3/\sqrt6)}{\sqrt3}
+        = a\,\frac{3}{\sqrt{18}}
+        = a\,\frac{3}{3\sqrt2}
+        = \frac{a}{\sqrt2}.
+    \]
+
+    Wähle nun $a=\sqrt2$ (Normierungsfreiheit), dann
+    \[
+      b = i\,\frac{\sqrt2}{\sqrt2} = i,
+      \qquad
+      c = \frac{\sqrt2}{\sqrt2} = 1.
+    \]
+    Somit
+    \[
+      |\xi_3\rangle = \sqrt2\,|1\rangle + i\,|2\rangle + 1\,|3\rangle.
+    \]
+    Die Norm ist
+    \(\|\xi_3\| = \sqrt{2 + 1 + 1} = 2,\)
+    also schließlich
+    \[
+      |\psi_3\rangle
+      = \frac{|\xi_3\rangle}{2}
+      = \frac{\sqrt2}{2}\,|1\rangle + \frac{i}{2}\,|2\rangle + \frac12\,|3\rangle.
+    \]
+\end{enumerate}
+
+\bigskip
+
+\section*{(b) Projektoren in Matrixform}
+
+Für jeden normierten Zustand definieren wir den Projektor
+\[
+  P_{\psi_i} \;=\; |\psi_i\rangle\langle\psi_i|,\qquad i=1,2,3.
+\]
+
+In der Basis \(\{|1\rangle,|2\rangle,|3\rangle\}\) ergeben sich:
+
+\[
+P_{\psi_1}
+= \begin{pmatrix}
+\frac13 & \frac{i\sqrt2}{3} & 0 \\[4pt]
+-\frac{i\sqrt2}{3} & \frac23 & 0 \\[4pt]
+0 & 0 & 0
+\end{pmatrix},\quad
+P_{\psi_2}
+= \begin{pmatrix}
+\frac16 & -\frac{i\sqrt2}{12} & -\frac{1}{2\sqrt2} \\[4pt]
+\frac{i\sqrt2}{12} & \frac1{12} & -\frac{i}{4} \\[4pt]
+-\frac{1}{2\sqrt2} & \frac{i}{4} & \frac34
+\end{pmatrix},
+\]
+\[
+P_{\psi_3}
+= \begin{pmatrix}
+\frac12 & -\frac{i\sqrt2}{4} & \frac{\sqrt2}{4} \\[4pt]
+\frac{i\sqrt2}{4} & \frac14 & \frac{i}{4} \\[4pt]
+\frac{\sqrt2}{4} & -\frac{i}{4} & \frac14
+\end{pmatrix}.
+\]
+
+\subsection*{Überprüfung}
+
+\begin{itemize}
+  \item \textbf{Hermitizität:} Jeder Projektor erfüllt
+    \(P_{\psi_i}^\dagger = P_{\psi_i}\), da
+    \((P_{\psi_i})_{jk} = \overline{(P_{\psi_i})_{kj}}\).
+  \item \textbf{Vollständigkeit:} Es gilt
+    \[
+      P_{\psi_1} + P_{\psi_2} + P_{\psi_3}
+      = \mathbb{I}_3,
+    \]
+    da die Diagonaleinträge aufsummiert \(1\) ergeben und alle Off-Diagonalen verschwinden.
+\end{itemize}
+
+\end{document}

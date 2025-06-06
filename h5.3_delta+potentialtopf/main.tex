@@ -1,0 +1,197 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\title{Lösung zu Aufgabe H5.3: Delta-Potential im Potentialtopf}
+\author{Stephan Bökelmann, Meihui Huang}
+\date{\today}
+\maketitle
+
+\section*{Aufgabenstellung}
+Ein Teilchen der Masse $m$ bewegt sich in einem eindimensionalen Topf
+\[
+V(x)=
+\begin{cases}
+\alpha\,\delta(x), & |x|<a,\\
+\infty,            & |x|\ge a,
+\end{cases}
+\qquad \alpha>0.
+\]
+\begin{enumerate}
+  \item[(a)] Bestimmen Sie das Spektrum des Systems. Leiten Sie die Gleichungen her, 
+    deren Lösungen die erlaubten Energieeigenwerte $E=\tfrac{\hbar^2k^2}{2m}$ beschreiben.
+  \item[(b)] Zeigen Sie für $m\alpha a/\hbar^2\gg1$, dass im unteren Spektralbereich
+    ($ka\ll m\alpha a/\hbar^2$) die Energieeigenwerte in fast entarteten Paaren 
+    auftreten, die für $a\to\infty$ beliebig nahe beieinander liegen. 
+    Setzen Sie dazu $ka = n\pi - \varepsilon$ und bestimmen Sie $\varepsilon$.
+\end{enumerate}
+
+\section{(a) Spektralgleichungen}
+
+\subsection*{1. Stationäre Schrödingergleichung}
+Für $|x|<a$, ohne den $\delta$-Impuls, gilt
+\[
+-\frac{\hbar^2}{2m}\,\psi''(x) = E\,\psi(x),
+\]
+mit allgemeiner Lösung
+\[
+\psi(x) = 
+\begin{cases}
+A\,\sin(kx) + B\,\cos(kx), & -a<x<0,\\
+C\,\sin(kx) + D\,\cos(kx), & 0<x<a,
+\end{cases}
+\qquad
+k = \sqrt{\frac{2mE}{\hbar^2}}.
+\]
+Außen ($|x|\ge a$) ist $V=\infty$, daher
+\[
+\psi(\pm a) = 0.
+\]
+
+\subsection*{2. Symmetrie und Randbedingungen}
+Da das Potential symmetrisch ist, zerlegen wir in gerade und ungerade Eigenfunktionen:
+
+\paragraph*{(i) Ungerade Zustände ($\psi(-x)=-\psi(x)$):}
+\[
+\psi(0)=0  \quad\Longrightarrow\quad 
+\psi(x) = 
+\begin{cases}
+A\,\sin\bigl[k(x + a)\bigr], & -a<x<0,\\
+A\,\sin\bigl[k(a - x)\bigr], & 0<x<a,
+\end{cases}
+\]
+so dass automatisch $\psi(\pm a)=0$ erfüllt ist. Keine Sprungbedingung an $x=0$, da 
+$\delta(x)\psi(0)=0$. Damit erhält man die Quantisierungsbedingung
+\[
+\sin(k a) = 0
+\;\;\Longrightarrow\;\;
+k_n^{(\text{odd})} = \frac{n\pi}{a},\quad n=1,2,3,\dots
+\]
+und
+\[
+E_n^{(\text{odd})} = \frac{\hbar^2}{2m}\,\Bigl(\tfrac{n\pi}{a}\Bigr)^2.
+\]
+
+\paragraph*{(ii) Gerade Zustände ($\psi(-x)=\psi(x)$):}
+\[
+\psi(x) = 
+\begin{cases}
+B\,\cos\bigl[k(x + a)\bigr], & -a<x<0,\\
+B\,\cos\bigl[k(a - x)\bigr], & 0<x<a,
+\end{cases}
+\]
+wiederum $\psi(\pm a)=0$. Bei $x=0$ gilt $\psi(0)=B\cos(ka)\neq0$, daher wirkt die
+$\delta$-Störung. Die Sprungbedingung für die Ableitung
+\[
+\psi'(0^+) - \psi'(0^-) \;=\;\frac{2m\alpha}{\hbar^2}\,\psi(0)
+\]
+führt auf
+\[
+-2\,k\,B\,\sin(k a)
+\;=\;\frac{2m\alpha}{\hbar^2}\,B\,\cos(k a)
+\quad\Longrightarrow\quad
+k\,\tan(k a) \;=\;\frac{m\alpha}{\hbar^2}.
+\]
+Dies ist die Transzendenzbedingung für gerade Zustände:
+\[
+k_n^{(\text{even})}\;\text{lösbar aus}\;k\,\tan(k a)=\beta,
+\quad\beta:=\frac{m\alpha}{\hbar^2}.
+\]
+Die zugehörigen Energien sind
+\[
+E_n^{(\text{even})} = \frac{\hbar^2}{2m}\,\bigl(k_n^{(\text{even})}\bigr)^2.
+\]
+
+\medskip
+\noindent
+\boxed{
+\begin{aligned}
+&\text{odd:}   &k_n &= \tfrac{n\pi}{a},\quad n=1,2,\dots, 
+&&E_n=\tfrac{\hbar^2}{2m}(n\pi/a)^2,\\
+&\text{even:} &k\;\tan(k a)&=\tfrac{m\alpha}{\hbar^2}, 
+&&E=\tfrac{\hbar^2 k^2}{2m}\,.
+\end{aligned}
+}
+
+\section{(b) Näherung für starke Störung $\beta a\gg1$}
+
+Im unteren Spektralbereich gilt $k a \ll \beta a$, daher auch $k a \ll \beta a \implies k a \ll \beta a$:
+
+\subsection*{1. Ungerade Zustände}
+Für die ungeraden Linien $k_n^{(\text{odd})}=n\pi/a$ unverändert. 
+
+\subsection*{2. Gerade Zustände: $k a = n\pi - \varepsilon$}
+Wir setzen für das $n$-te gerade Niveau
+\[
+k a = n\pi - \varepsilon,\qquad 0<\varepsilon\ll1.
+\]
+Dann
+\[
+\tan(k a) = \tan(n\pi - \varepsilon) = -\,\tan(\varepsilon)\approx -\,\varepsilon.
+\]
+Eingesetzt in
+\[
+k\,\tan(k a) = \beta
+\;\;\Longrightarrow\;\;
+k\,(-\varepsilon) \;\approx\;\beta
+\;\;\Longrightarrow\;\;
+\varepsilon \;\approx\; -\,\frac{\beta}{k}
+\]
+Da $k\approx n\pi/a$ und $\beta\gg k$, ist $\varepsilon\gg1$ ungültig im ersten Blick. 
+Stattdessen nutzt man für große $\beta a$ die Polstellen von $\tan$: 
+Man schreibt besser
+\[
+k a = \Bigl(n+\tfrac12\Bigr)\pi + \varepsilon,
+\]
+weil dort $\tan$ eine Null kreuzt. Dann
+\[
+\tan\bigl((n+\tfrac12)\pi + \varepsilon\bigr) = -\,\cot(\varepsilon)\approx -\tfrac1\varepsilon,
+\]
+und die Gleichung $k\,\tan(k a)=\beta$ wird
+\[
+k\,\Bigl(-\frac1\varepsilon\Bigr)=\beta
+\quad\Longrightarrow\quad
+\varepsilon \approx \frac{k}{\beta}
+\approx \frac{(n+\tfrac12)\pi/a}{m\alpha/\hbar^2}
+= \frac{(n+\tfrac12)\,\pi\,\hbar^2}{m\alpha\,a}.
+\]
+Damit liegen die geraden Niveaus nahe bei den halbzahlig-fachen Knoten des leeren Kastens, 
+verschoben um $\varepsilon$. 
+
+\subsection*{3. Entartung der Paare}
+Für $\beta a\gg1$ gilt
+\[
+\varepsilon \ll1,
+\]
+also
+\[
+k_n^{(\text{even})}a \approx \Bigl(n+\tfrac12\Bigr)\pi + \frac{(n+\tfrac12)\pi}{\beta a},
+\quad
+k_n^{(\text{odd})}a = n\pi.
+\]
+Beide liegen dicht beieinander: je ein gerades und ein ungerades Niveau pro $n$, mit Abstand
+\[
+\Delta(k a)\approx \frac{\pi}{2} - n\pi \;+\;\varepsilon
+\quad\text{bzw.}\quad
+\varepsilon\sim\frac{(n+\tfrac12)\pi}{\beta a}\;\ll1.
+\]
+Im Grenzfall $a\to\infty$ (bei festem $\alpha$) wird $\varepsilon\to0$ und die Paare 
+werden exakt entartet.
+
+\section*{Zusammenfassung}
+\begin{itemize}
+  \item Für schwache Störung ($\beta a\ll1$) verschieben sich nur die geraden Zustände etwas, 
+    die ungeraden bleiben bei $n\pi/a$. 
+  \item Für starke Störung ($\beta a\gg1$) tritt im unteren Bereich eine fast exakte 
+    Paarentartung auf: je ein gerades und ungerades Niveau pro $n$, weil der $\delta$-Impuls 
+    in der Mitte den Kasten in zwei nahezu entkoppelte Hälften teilt.
+  \item Physikalisch entspricht dies zwei getrennten Potentialkästen der Breite $a$,
+    die nur durch eine starke Barriere gekoppelt sind; die Quanten-Tunnelung führt 
+    zu schwacher Niveauteilung.
+\end{itemize}
+
+\end{document}
